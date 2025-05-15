@@ -11,13 +11,13 @@ class PageController extends Controller
         return view('index');
     }
 
-    public function history()
+    public function daftar_pesanan()
     {
-        return view('history');
+        return view('daftar_pesanan');
     }
 
-    public function gallery()
+    public function pesan_tiket()
     {
-        return view('gallery');
+        return view('pesan_tiket');
     }
 }

@@ -94,8 +94,8 @@
     <header>
         <nav>
             <a href="{{ route('index') }}">Beranda</a>
-            <a href="{{ route('history') }}">Sejarah</a>
-            <a href="{{ route('gallery') }}">Galeri Wisata</a>
+            <a href="{{ route('pesan_tiket') }}">Pesan Tiket</a>
+            <a href="{{ route('daftar_pesanan') }}">Daftar Pesanan</a>
             @auth
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
