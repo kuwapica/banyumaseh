@@ -7,8 +7,18 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PesananController;
 
-Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/pesanan', [PesananController::class, 'daftarPesanan'])->middleware('auth')->name('daftar_pesanan');
+
+// Authentication Routes
+// Auth::routes();
+
+// Other Pages
+Route::get('/destination', 'DestinationController@index')->name('destination');
+Route::get('/culinary', 'CulinaryController@index')->name('culinary');
+Route::get('/regional-art', 'RegionalArtController@index')->name('regional-art');
+Route::get('/history', 'HistoryController@index')->name('history');
+Route::get('/about', 'AboutController@index')->name('about');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');

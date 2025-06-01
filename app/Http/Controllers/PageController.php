@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('home');
     }
 
     public function daftar_pesanan()
@@ -19,5 +19,10 @@ class PageController extends Controller
     public function pesan_tiket()
     {
         return view('pesan_tiket');
+    }
+
+    public function destination()
+    {
+        return view('destinasi');
     }
 }
