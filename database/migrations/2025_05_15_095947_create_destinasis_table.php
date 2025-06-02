@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_destinasi');
             $table->text('deskripsi');
             $table->decimal('harga', 10, 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

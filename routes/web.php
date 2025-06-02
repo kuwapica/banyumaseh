@@ -47,6 +47,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 // Route untuk user
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/beranda', function () {
-        return view('index');
+        return view('home');
     })->name('user.dashboard');
 });
