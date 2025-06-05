@@ -13,11 +13,22 @@ return new class extends Migration
     {
         Schema::create('destinasis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_destinasi');
-            $table->text('deskripsi');
-            $table->decimal('harga', 10, 2);
-            $table->string('gambar')->nullable();
+            $table->string('name');
+            $table->text('description');
+            $table->string('image')->nullable();
+            $table->string('category')->default('Wisata Alam');
+            $table->decimal('rating', 2, 1)->default(0.0);
+            $table->decimal('price', 10, 2)->default(0.00);
+            $table->string('location');
+            $table->boolean('featured')->default(false);
             $table->timestamps();
+            
+            // Indexes untuk performance
+            $table->index('category');
+            $table->index('featured');
+            $table->index('rating');
+            $table->index('price');
+            $table->index('location');
         });
     }
 
