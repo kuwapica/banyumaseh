@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Dashboard Admin Banyumaseh') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -54,20 +54,20 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Menu Admin
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Customer</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Customer:</h6>
-                        <a class="collapse-item" href="buttons.html">Daftar Pesanan</a>
+                        <a class="collapse-item" href="">Daftar Pesanan</a>
                     </div>
                 </div>
             </li>
@@ -77,13 +77,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Website</span>
+                    <span>Admin</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Website:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Artikel</a>
+                        <h6 class="collapse-header">Admin:</h6>
+                        <a class="collapse-item" href="{{ route('destinasi.index') }}">Data User</a>
+                        <a class="collapse-item" href="{{ route('destinasi.index') }}">Destinasi</a>
                     </div>
                 </div>
             </li>

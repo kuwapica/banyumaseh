@@ -1,4 +1,6 @@
 @extends('layouts.admin')
+
+@section('title', 'Dashboard Admin')
 @section('main')
     <!-- Begin Page Content -->
     <div class="container-fluid">
