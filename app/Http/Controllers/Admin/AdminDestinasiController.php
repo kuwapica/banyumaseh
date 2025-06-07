@@ -17,14 +17,45 @@ class AdminDestinasiController extends Controller
         $destinasis = Destinasi::latest()->get();
         return view('admin.destinasi', compact('destinasis'));
     }
+    public function create()
+    {
+        return view('admin.createdestinasi');
+    }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'image' => 'nullable|image|max:2048', // Max 2MB
+            'price' => 'required|numeric',
+            'location' => 'required',
+        ]);
 
+        $destinasi = new Destinasi();
+        $destinasi->name = $request->name;
+        $destinasi->description = $request->description;
+        $destinasi->price = $request->price;
+        $destinasi->location = $request->location;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('destinasi', 'public');
+            $destinasi->image = $imagePath;
+        }
+
+        $destinasi->save();
+
+        return redirect()->route('destinasi.index')->with('success', 'Post created successfully.');
+    }
 
     /**
      * Display the specified resource.
      */
     public function show(Destinasi $destinasi)
     {
-        return view('destinasis.show', compact('destinasi'));
+        return view('destinasi.show', compact('destinasi'));
     }
 
     /**
@@ -32,7 +63,7 @@ class AdminDestinasiController extends Controller
      */
     public function edit(Destinasi $destinasi)
     {
-        return view('destinasis.edit', compact('destinasi'));
+        return view('destinasi.edit', compact('destinasi'));
     }
 
     /**
@@ -41,25 +72,29 @@ class AdminDestinasiController extends Controller
     public function update(Request $request, Destinasi $destinasi)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required',
-            'image' => 'nullable|image|max:2048',
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'image' => 'nullable|image|max:2048', // Max 2MB
+            'location' => 'required',
+            'price' => 'required|numeric',
         ]);
 
-        $destinasi->title = $request->title;
-        $destinasi->content = $request->content;
+        $destinasi->name = $request->name;
+        $destinasi->description = $request->description;
+        $destinasi->location = $request->location;
+        $destinasi->price = $request->price;
 
         if ($request->hasFile('image')) {
             if ($destinasi->image) {
                 Storage::delete('public/' . $destinasi->image);
             }
-            $imagePath = $request->file('image')->store('destinasis', 'public');
+            $imagePath = $request->file('image')->store('destinasi', 'public');
             $destinasi->image = $imagePath;
         }
 
         $destinasi->save();
 
-        return redirect()->route('destinasis.index')->with('success', 'Destinasi updated successfully.');
+        return redirect()->route('destinasi.index')->with('success', 'Destinasi updated successfully.');
     }
 
     /**
@@ -71,6 +106,6 @@ class AdminDestinasiController extends Controller
             Storage::delete('public/' . $destinasi->image);
         }
         $destinasi->delete();
-        return redirect()->route('destinasis.index')->with('success', 'Destinasi deleted successfully.');
+        return redirect()->route('destinasi.index')->with('success', 'Destinasi deleted successfully.');
     }
 }
