@@ -44,12 +44,12 @@
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                             action="{{ route('destinasi.destroy', $destinasi->id) }}" method="POST">
                                             <a href="{{ route('destinasi.show', $destinasi->id) }}"
-                                                class="btn btn-sm btn-dark">SHOW</a>
+                                                class="btn btn-sm btn-dark">Show</a>
                                             <a href="{{ route('destinasi.edit', $destinasi->id) }}"
-                                                class="btn btn-sm btn-primary">EDIT</a>
+                                                class="btn btn-sm btn-primary">Edit</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>

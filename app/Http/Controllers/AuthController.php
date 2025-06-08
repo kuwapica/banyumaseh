@@ -73,7 +73,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        if (strtolower($user->role) === 'admin') {
+        if ($user->role === UserRole::Admin) {
             return redirect()->route('admin.dashboard');
         } else {
             return redirect()->route('user.dashboard');
