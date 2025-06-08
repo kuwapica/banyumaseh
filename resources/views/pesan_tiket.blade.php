@@ -3,147 +3,227 @@
 @section('title', 'Pesan Tiket Wisata')
 
 @section('content')
-<div class="max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-blue-600 mb-8 text-center">Form Pemesanan Tiket Wisata</h1>
-    <div class="card mx-auto" style="width: 70%;">
-        <div class="card-body">
-            <form action="{{ route('pesan_tiket.store') }}" method="POST">
-                @csrf
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Kolom Kiri -->
-                    <div>
-                        <div class="mb-4">
-                            <label for="nama_lengkap" class="form-label block text-gray-700 font-medium mb-2">Nama Lengkap</label>
-                            <input type="text" name="nama_lengkap" id="nama_lengkap" 
-                                class="form-control w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                value="{{ old('nama_lengkap', auth()->user()->name ?? '') }}" required>
-                            @error('nama_lengkap')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-primary mb-3">Pesan Tiket Wisata</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">Nikmati pengalaman wisata terbaik dengan pemesanan tiket yang mudah dan cepat</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Booking Form -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="h5 mb-0">Form Pemesanan Tiket</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form action="{{ route('pesan_tiket.store') }}" method="POST">
+                        @csrf
+                        
+                        <div class="row g-3">
+                            <!-- Left Column -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" 
+                                           value="{{ old('nama_lengkap', auth()->user()->name ?? '') }}" required>
+                                    @error('nama_lengkap')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="no_identitas" class="form-label">No Identitas (KTP/SIM)</label>
+                                    <input type="text" class="form-control" name="no_identitas" id="no_identitas" 
+                                           value="{{ old('no_identitas') }}" required>
+                                    @error('no_identitas')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="no_hp" class="form-label">No HP</label>
+                                    <input type="text" class="form-control" name="no_hp" id="no_hp" 
+                                           value="{{ old('no_hp') }}" required>
+                                    @error('no_hp')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <!-- Right Column -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="destinasi_id" class="form-label">Nama Wisata</label>
+                                    <select class="form-select" name="destinasi_id" id="destinasi_id" required>
+                                        <option value="">-- Pilih Wisata --</option>
+                                        @foreach($destinasis as $destinasi)
+                                            <option value="{{ $destinasi->id }}" 
+                                                    data-harga="{{ $destinasi->harga }}" 
+                                                    data-kuota="{{ $destinasi->kuota }}"
+                                                    {{ old('destinasi_id') == $destinasi->id ? 'selected' : '' }}>
+                                                {{ $destinasi->nama_destinasi }} (Rp {{ number_format($destinasi->harga, 0, ',', '.') }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('destinasi_id')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="tanggal_kunjungan" class="form-label">Tanggal Kunjungan</label>
+                                    <input type="date" class="form-control" name="tanggal_kunjungan" id="tanggal_kunjungan" 
+                                           min="{{ date('Y-m-d') }}" 
+                                           value="{{ old('tanggal_kunjungan') }}" required>
+                                    @error('tanggal_kunjungan')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="jumlah_tiket" class="form-label">Jumlah Tiket</label>
+                                    <input type="number" class="form-control" name="jumlah_tiket" id="jumlah_tiket" min="1" 
+                                           value="{{ old('jumlah_tiket', 1) }}" required>
+                                    <div id="kuota-info" class="form-text"></div>
+                                    @error('jumlah_tiket')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="mb-4">
-                            <label for="no_identitas" class="form-label block text-gray-700 font-medium mb-2">No Identitas (KTP/SIM)</label>
-                            <input type="text" name="no_identitas" id="no_identitas" 
-                                class="form-control w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                value="{{ old('no_identitas') }}" required>
-                            @error('no_identitas')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
+                        <!-- Price Summary -->
+                        <div class="bg-light p-4 rounded-3 mt-4">
+                            <h3 class="h5 text-primary mb-3">Ringkasan Pembayaran</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="mb-2">Harga Tiket:</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p id="harga-tiket" class="mb-2 fw-semibold">Rp 0</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="mb-2">Jumlah Tiket:</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p id="jumlah-display" class="mb-2">0</p>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="mb-0 fw-semibold">Total Bayar:</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p id="total-bayar" class="mb-0 fs-5 fw-bold text-primary">Rp 0</p>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="mb-4">
-                            <label for="no_hp" class="form-label block text-gray-700 font-medium mb-2">No HP</label>
-                            <input type="text" name="no_hp" id="no_hp" 
-                                class="form-control w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                value="{{ old('no_hp') }}" required>
-                            @error('no_hp')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-ticket-perforated me-2"></i> Pesan Tiket Sekarang
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Help Section -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="h5 mb-0">Informasi Penting</h2>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item border-0 px-0 py-2">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-info-circle-fill text-primary me-2 mt-1"></i>
+                                <div>
+                                    <h5 class="mb-1 h6">Pembayaran</h5>
+                                    <p class="small text-muted mb-0">Pembayaran dapat dilakukan langsung di lokasi wisata atau melalui transfer bank.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item border-0 px-0 py-2">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-info-circle-fill text-primary me-2 mt-1"></i>
+                                <div>
+                                    <h5 class="mb-1 h6">Pembatalan</h5>
+                                    <p class="small text-muted mb-0">Pembatalan dapat dilakukan maksimal H-1 sebelum tanggal kunjungan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item border-0 px-0 py-2">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-info-circle-fill text-primary me-2 mt-1"></i>
+                                <div>
+                                    <h5 class="mb-1 h6">Persyaratan</h5>
+                                    <p class="small text-muted mb-0">Harap membawa bukti identitas asli saat berkunjung.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Kolom Kanan -->
-                    <div>
-                        <div class="mb-4">
-                            <label for="destinasi_id" class="form-label block text-gray-700 font-medium mb-2">Nama Wisata</label>
-                            <select name="destinasi_id" id="destinasi_id" 
-                                    class="form-select w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                                <option value="">-- Pilih Wisata --</option>
-                                @foreach($destinasis as $destinasi)
-                                    <option value="{{ $destinasi->id }}" 
-                                            data-harga="{{ $destinasi->harga }}" 
-                                            data-kuota="{{ $destinasi->kuota }}"
-                                            {{ old('destinasi_id') == $destinasi->id ? 'selected' : '' }}>
-                                        {{ $destinasi->nama_destinasi }} (Rp {{ number_format($destinasi->harga, 0, ',', '.') }})
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('destinasi_id')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="tanggal_kunjungan" class="form-label block text-gray-700 font-medium mb-2">Tanggal Kunjungan</label>
-                            <input type="date" name="tanggal_kunjungan" id="tanggal_kunjungan" 
-                                class="form-control w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                min="{{ date('Y-m-d') }}" 
-                                value="{{ old('tanggal_kunjungan') }}" required>
-                            @error('tanggal_kunjungan')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="jumlah_tiket" class="form-label block text-gray-700 font-medium mb-2">Jumlah Tiket</label>
-                            <input type="number" name="jumlah_tiket" id="jumlah_tiket" min="1" 
-                                class="form-control w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                value="{{ old('jumlah_tiket', 1) }}" required>
-                            <p id="kuota-info" class="text-sm text-gray-500 mt-1"></p>
-                            @error('jumlah_tiket')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+                    <div class="mt-4 pt-3 border-top">
+                        <h5 class="h6 mb-3">Butuh Bantuan?</h5>
+                        <ul class="list-unstyled small">
+                            <li class="mb-2">
+                                <i class="bi bi-telephone-fill text-primary me-2"></i>
+                                +62 812-3456-7890
+                            </li>
+                            <li class="mb-0">
+                                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                cs@wisatakita.com
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
-                <!-- Informasi Harga -->
-                <div class="mt-6 p-4 bg-gray-50 rounded-lg">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-700">Harga Tiket:</span>
-                        <span id="harga-tiket" class="font-semibold">Rp 0</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-700 font-medium">Total Bayar:</span>
-                        <span id="total-bayar" class="text-xl font-bold text-blue-600">Rp 0</span>
-                    </div>
-                </div>
-                
-                <div class="mt-6 flex justify-end">
-                    <button type="submit" class="btn btn-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-200 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-1 w-1 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
-                        </svg>
-                        Pesan Tiket
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     
-    
-    <div class="bg-white rounded-lg shadow-md p-6">
+    <!-- Destinations List -->
+    <div class="mt-5 pt-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-primary mb-3">Destinasi Wisata Kami</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">Temukan berbagai pilihan destinasi wisata menarik untuk dikunjungi</p>
+        </div>
         
-    </div>
-    
-    <!-- Daftar Destinasi -->
-    <div class="mt-12">
-        <h2 class="text-2xl font-bold text-blue-600 mb-6">Daftar Destinasi Wisata</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="row g-4">
             @foreach($destinasis as $destinasi)
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <div class="h-48 bg-gray-200 overflow-hidden">
-                        @if($destinasi->gambar)
-                            <img src="{{ asset('storage/' . $destinasi->gambar) }}" alt="{{ $destinasi->nama_destinasi }}" class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center text-gray-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            @if($destinasi->gambar)
+                                <img src="{{ asset('storage/' . $destinasi->gambar) }}" class="card-img-top h-100 object-cover" alt="{{ $destinasi->nama_destinasi }}">
+                            @else
+                                <div class="h-100 d-flex align-items-center justify-content-center bg-light">
+                                    <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                                </div>
+                            @endif
+                            <div class="position-absolute bottom-0 start-0 end-0 p-3" style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                                <h5 class="text-white mb-1">{{ $destinasi->nama_destinasi }}</h5>
+                                <p class="text-warning mb-0">Rp {{ number_format($destinasi->harga, 0, ',', '.') }} / tiket</p>
                             </div>
-                        @endif
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800">{{ $destinasi->nama_destinasi }}</h3>
-                        <p class="text-blue-600 font-semibold mt-1">Rp {{ number_format($destinasi->harga, 0, ',', '.') }} / tiket</p>
-                        <p class="text-gray-600 mt-2 line-clamp-2">{{ $destinasi->deskripsi }}</p>
-                        <div class="mt-3 flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Kuota: {{ $destinasi->kuota }}</span>
-                            <a href="#form-pesan" class="text-blue-500 hover:text-blue-700 text-sm font-medium">Pesan Sekarang</a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-muted mb-3">{{ Str::limit($destinasi->deskripsi, 120) }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary bg-opacity-10 text-primary">
+                                    Kuota: {{ $destinasi->kuota }}
+                                </span>
+                                <a href="#destinasi_id" onclick="document.getElementById('destinasi_id').value='{{ $destinasi->id }}'; document.getElementById('destinasi_id').dispatchEvent(new Event('change'));" 
+                                   class="btn btn-sm btn-outline-primary">
+                                    Pesan Sekarang <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,11 +232,15 @@
     </div>
 </div>
 
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const destinasiSelect = document.getElementById('destinasi_id');
         const jumlahTiketInput = document.getElementById('jumlah_tiket');
         const hargaTiketSpan = document.getElementById('harga-tiket');
+        const jumlahDisplay = document.getElementById('jumlah-display');
         const totalBayarSpan = document.getElementById('total-bayar');
         const kuotaInfo = document.getElementById('kuota-info');
         
@@ -167,6 +251,7 @@
             const total = harga * jumlahTiket;
             
             hargaTiketSpan.textContent = 'Rp ' + harga.toLocaleString('id-ID');
+            jumlahDisplay.textContent = jumlahTiket;
             totalBayarSpan.textContent = 'Rp ' + total.toLocaleString('id-ID');
             
             if (selectedOption) {
@@ -174,11 +259,12 @@
                 kuotaInfo.textContent = `Kuota tersedia: ${kuota}`;
                 
                 if (jumlahTiket > kuota) {
-                    kuotaInfo.classList.add('text-red-500');
-                    kuotaInfo.classList.remove('text-green-500');
+                    kuotaInfo.classList.remove('text-success');
+                    kuotaInfo.classList.add('text-danger');
+                    kuotaInfo.innerHTML += ' <span class="fw-semibold">(Jumlah melebihi kuota)</span>';
                 } else {
-                    kuotaInfo.classList.add('text-green-500');
-                    kuotaInfo.classList.remove('text-red-500');
+                    kuotaInfo.classList.remove('text-danger');
+                    kuotaInfo.classList.add('text-success');
                 }
             }
         }
@@ -188,6 +274,14 @@
         
         // Initialize calculation
         calculateTotal();
+        
+        // Scroll to form when clicking "Pesan Sekarang" from destinations
+        document.querySelectorAll('a[href="#destinasi_id"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('destinasi_id').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
     });
 </script>
 @endsection
