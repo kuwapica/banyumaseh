@@ -45,22 +45,6 @@
                                 href="{{ route('pesan_tiket') }}">Booking</a>
                         </li>
                     @endif
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('culinary*') ? 'active' : '' }}"
-                            href="{{ route('culinary') }}">Culinary</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('regional-art*') ? 'active' : '' }}"
-                            href="{{ route('regional-art') }}">Regional Art</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('history*') ? 'active' : '' }}"
-                            href="{{ route('history') }}">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('about*') ? 'active' : '' }}"
-                            href="{{ route('about') }}">About</a>
-                    </li>
                 </ul>
 
                 <!-- User Navigation -->
@@ -158,10 +142,6 @@ py-4 mt-5
                         <ul class="list-unstyled mt-3">
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('destination') ?? route('destinasi.index') }}">Destination</a></li>
-                            <li><a href="{{ route('culinary') }}">Culinary</a></li>
-                            <li><a href="{{ route('regional-art') }}">Regional Art</a></li>
-                            <li><a href="{{ route('history') }}">History</a></li>
-                            <li><a href="{{ route('about') }}">About</a></li>
                         </ul>
                     </div>
                 </div>
