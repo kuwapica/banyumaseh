@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminDestinasiController;
 
 Route::get('/', function () {
@@ -53,10 +55,9 @@ Route::delete('/pesanan/{pesanan}/cancel', [PesananController::class, 'cancel'])
 
 // Route untuk admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/destinasi', AdminDestinasiController::class);
+    Route::resource('/admin/user', AdminUserController::class);
 });
 
 // Route untuk user

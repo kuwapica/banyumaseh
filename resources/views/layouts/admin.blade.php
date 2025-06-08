@@ -86,7 +86,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Admin:</h6>
-                        <a class="collapse-item" href="{{ route('destinasi.index') }}">Data User</a>
+                        <a class="collapse-item" href="{{ route('user.index') }}">Data User</a>
                         <a class="collapse-item" href="{{ route('destinasi.index') }}">Destinasi</a>
                     </div>
                 </div>

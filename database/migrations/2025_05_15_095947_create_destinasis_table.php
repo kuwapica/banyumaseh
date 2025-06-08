@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('location');
             $table->boolean('featured')->default(false);
             $table->timestamps();
-            
+
             // Indexes untuk performance
             $table->index('category');
             $table->index('featured');
