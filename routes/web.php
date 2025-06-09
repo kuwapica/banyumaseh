@@ -11,64 +11,64 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminDestinasiController;
 use App\Http\Controllers\Admin\AdminPesananController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home Route - menggunakan HomeController
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', [PageController::class, 'index'])->name('home');
-Route::get('/pesanan', [PesananController::class, 'daftarPesanan'])->middleware('auth')->name('daftar_pesanan');
+// Destinasi Routes
+Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
+Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
 
 // Authentication Routes
-// Auth::routes();
-
-// Other Pages
-// Route::get('/destinasi', 'DestinasiController@index')->name('destination');
-Route::get('/culinary', 'CulinaryController@index')->name('culinary');
-Route::get('/regional-art', 'RegionalArtController@index')->name('regional-art');
-Route::get('/history', 'HistoryController@index')->name('history');
-Route::get('/about', 'AboutController@index')->name('about');
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
-
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
+// Pesanan Routes
 Route::get('/pesan-tiket', [PesananController::class, 'index'])->name('pesan_tiket');
 Route::post('/pesan-tiket', [PesananController::class, 'store'])->name('pesan_tiket.store');
-
-Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
-Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
-
 Route::post('/pesan/{destinasi}', [PesananController::class, 'store'])
     ->name('pesan.store')
     ->middleware('auth');
 
-// Daftar Pesanan
-Route::get('/daftar-pesanan', [PesananController::class, 'index'])->name('daftar_pesanan');
+// Daftar Pesanan Routes - hapus yang duplikat
+Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->middleware('auth')->name('daftar_pesanan');
 Route::delete('/pesanan/{pesanan}/cancel', [PesananController::class, 'cancel'])->name('pesanan.cancel');
-Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->name('daftar_pesanan');
 
-// Route::resource('destinasi', DestinasiController::class);
-// Route::get('/admin/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
+// Other Pages - commented out until controllers are created
+// Route::get('/culinary', 'CulinaryController@index')->name('culinary');
+// Route::get('/regional-art', 'RegionalArtController@index')->name('regional-art');
+// Route::get('/history', 'HistoryController@index')->name('history');
+// Route::get('/about', 'AboutController@index')->name('about');
 
-
-// Route untuk admin
+// Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::resource('/admin/destinasi', AdminDestinasiController::class);
-    Route::resource('/admin/user', AdminUserController::class);
-    Route::get('/pesanan', [AdminPesananController::class, 'index'])->name('admin.customer_pesanan');
-    Route::get('/pesanan/{id}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
-    Route::patch('/pesanan/{id}/status', [AdminPesananController::class, 'updateStatus'])->name('admin.pesanan.updateStatus');
+    Route::resource('/admin/destinasi', AdminDestinasiController::class)->names([
+        'index' => 'admin.destinasi.index',
+        'create' => 'admin.destinasi.create',
+        'store' => 'admin.destinasi.store',
+        'show' => 'admin.destinasi.show',
+        'edit' => 'admin.destinasi.edit',
+        'update' => 'admin.destinasi.update',
+        'destroy' => 'admin.destinasi.destroy'
+    ]);
+    Route::resource('/admin/user', AdminUserController::class)->names([
+        'index' => 'admin.user.index',
+        'create' => 'admin.user.create',
+        'store' => 'admin.user.store',
+        'show' => 'admin.user.show',
+        'edit' => 'admin.user.edit',
+        'update' => 'admin.user.update',
+        'destroy' => 'admin.user.destroy'
+    ]);
+    Route::get('/admin/pesanan', [AdminPesananController::class, 'index'])->name('admin.customer_pesanan');
+    Route::get('/admin/pesanan/{id}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
+    Route::patch('/admin/pesanan/{id}/status', [AdminPesananController::class, 'updateStatus'])->name('admin.pesanan.updateStatus');
 });
 
-// Route untuk user
+// User Routes
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/beranda', function () {
         return view('home');

@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed Users
-        $users = [
-            ['email' => 'test@example.com'],
+        User::create([
             ['name' => 'Test User'],
+            ['email' => 'test@example.com'],
             ['password' => Hash::make('1234')],
             ['role' => 'User']
-        ];
+        ]);
 
 
         // Seed Categories
