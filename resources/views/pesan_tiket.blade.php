@@ -3,14 +3,6 @@
 @section('title', 'Pesan Tiket Wisata')
 
 @section('content')
-<<<<<<< HEAD
-    <div class="container py-5">
-        <!-- Hero Section -->
-        <div class="text-center mb-5">
-            <h1 class="display-5 fw-bold text-primary mb-3">Pesan Tiket Wisata</h1>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">Nikmati pengalaman wisata terbaik dengan pemesanan
-                tiket yang mudah dan cepat</p>
-=======
 <div class="container">
     <!-- Hero Section -->
    
@@ -205,7 +197,6 @@
         <div class="text-center" style="margin-bottom: 100px">
             <h2 class="display-5 fw-bold text-primary mb-3">Destinasi Wisata Kami</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">Temukan berbagai pilihan destinasi wisata menarik untuk dikunjungi</p>
->>>>>>> 7a8a929 (pesanan baruuuu)
         </div>
 
         <div class="row g-4">
