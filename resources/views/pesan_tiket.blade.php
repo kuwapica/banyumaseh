@@ -60,10 +60,9 @@
                                         <option value="">-- Pilih Wisata --</option>
                                         @foreach($destinasis as $destinasi)
                                             <option value="{{ $destinasi->id }}" 
-                                                    data-harga="{{ $destinasi->harga }}" 
-                                                    data-kuota="{{ $destinasi->kuota }}"
+                                                    data-harga="{{ $destinasi->price }}" 
                                                     {{ old('destinasi_id') == $destinasi->id ? 'selected' : '' }}>
-                                                {{ $destinasi->nama_destinasi }} (Rp {{ number_format($destinasi->harga, 0, ',', '.') }})
+                                                {{ $destinasi->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -82,11 +81,10 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="mb-3">
+                               <div class="mb-3">
                                     <label for="jumlah_tiket" class="form-label">Jumlah Tiket</label>
                                     <input type="number" class="form-control" name="jumlah_tiket" id="jumlah_tiket" min="1" 
-                                           value="{{ old('jumlah_tiket', 1) }}" required>
-                                    <div id="kuota-info" class="form-text"></div>
+                                        value="{{ old('jumlah_tiket', 1) }}" required>
                                     @error('jumlah_tiket')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
@@ -201,24 +199,21 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow-sm overflow-hidden">
                         <div class="position-relative overflow-hidden" style="height: 200px;">
-                            @if($destinasi->gambar)
-                                <img src="{{ asset('storage/' . $destinasi->gambar) }}" class="card-img-top h-100 object-cover" alt="{{ $destinasi->nama_destinasi }}">
+                            @if($destinasi->image)
+                                <img src="{{ asset('storage/' . $destinasi->image) }}" class="card-img-top h-100 object-cover" alt="{{ $destinasi->nama_destinasi }}">
                             @else
                                 <div class="h-100 d-flex align-items-center justify-content-center bg-light">
                                     <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
                                 </div>
                             @endif
                             <div class="position-absolute bottom-0 start-0 end-0 p-3" style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-                                <h5 class="text-white mb-1">{{ $destinasi->nama_destinasi }}</h5>
-                                <p class="text-warning mb-0">Rp {{ number_format($destinasi->harga, 0, ',', '.') }} / tiket</p>
+                                <h5 class="text-white mb-1">{{ $destinasi->name }}</h5>
+                                <p class="text-warning mb-0">Rp {{ number_format($destinasi->price, 0, ',', '.') }} / tiket</p>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text text-muted mb-3">{{ Str::limit($destinasi->deskripsi, 120) }}</p>
+                            <p class="card-text text-muted mb-3">{{ Str::limit($destinasi->description, 120) }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="badge bg-primary bg-opacity-10 text-primary">
-                                    Kuota: {{ $destinasi->kuota }}
-                                </span>
                                 <a href="#destinasi_id" onclick="document.getElementById('destinasi_id').value='{{ $destinasi->id }}'; document.getElementById('destinasi_id').dispatchEvent(new Event('change'));" 
                                    class="btn btn-sm btn-outline-primary">
                                     Pesan Sekarang <i class="bi bi-arrow-right ms-1"></i>
@@ -234,7 +229,7 @@
 
 <!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-
+<!-- Hapus bagian yang terkait kuota -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const destinasiSelect = document.getElementById('destinasi_id');
@@ -242,7 +237,6 @@
         const hargaTiketSpan = document.getElementById('harga-tiket');
         const jumlahDisplay = document.getElementById('jumlah-display');
         const totalBayarSpan = document.getElementById('total-bayar');
-        const kuotaInfo = document.getElementById('kuota-info');
         
         function calculateTotal() {
             const selectedOption = destinasiSelect.options[destinasiSelect.selectedIndex];
@@ -253,35 +247,11 @@
             hargaTiketSpan.textContent = 'Rp ' + harga.toLocaleString('id-ID');
             jumlahDisplay.textContent = jumlahTiket;
             totalBayarSpan.textContent = 'Rp ' + total.toLocaleString('id-ID');
-            
-            if (selectedOption) {
-                const kuota = parseInt(selectedOption.dataset.kuota);
-                kuotaInfo.textContent = `Kuota tersedia: ${kuota}`;
-                
-                if (jumlahTiket > kuota) {
-                    kuotaInfo.classList.remove('text-success');
-                    kuotaInfo.classList.add('text-danger');
-                    kuotaInfo.innerHTML += ' <span class="fw-semibold">(Jumlah melebihi kuota)</span>';
-                } else {
-                    kuotaInfo.classList.remove('text-danger');
-                    kuotaInfo.classList.add('text-success');
-                }
-            }
         }
         
         destinasiSelect.addEventListener('change', calculateTotal);
         jumlahTiketInput.addEventListener('input', calculateTotal);
-        
-        // Initialize calculation
         calculateTotal();
-        
-        // Scroll to form when clicking "Pesan Sekarang" from destinations
-        document.querySelectorAll('a[href="#destinasi_id"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('destinasi_id').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
     });
 </script>
 @endsection

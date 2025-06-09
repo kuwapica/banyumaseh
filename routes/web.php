@@ -9,6 +9,7 @@ use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminDestinasiController;
+use App\Http\Controllers\AdminPesananController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,7 +42,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 Route::get('/pesan-tiket', [PesananController::class, 'index'])->name('pesan_tiket');
 Route::post('/pesan-tiket', [PesananController::class, 'store'])->name('pesan_tiket.store');
 
-
 Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
 Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
 
@@ -50,8 +50,9 @@ Route::post('/pesan/{destinasi}', [PesananController::class, 'store'])
     ->middleware('auth');
 
 // Daftar Pesanan
-Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->name('daftar_pesanan');
+Route::get('/daftar-pesanan', [PesananController::class, 'index'])->name('daftar_pesanan');
 Route::delete('/pesanan/{pesanan}/cancel', [PesananController::class, 'cancel'])->name('pesanan.cancel');
+Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->name('daftar_pesanan');
 
 // Route::resource('destinasi', DestinasiController::class);
 // Route::get('/admin/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
@@ -62,6 +63,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/destinasi', AdminDestinasiController::class);
     Route::resource('/admin/user', AdminUserController::class);
+    Route::get('/pesanan', [AdminPesananController::class, 'index'])->name('admin.customer_pesanan');
+    Route::get('/pesanan/{id}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
+    Route::patch('/pesanan/{id}/status', [AdminPesananController::class, 'updateStatus'])->name('admin.pesanan.updateStatus');
 });
 
 // Route untuk user
@@ -70,3 +74,5 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('home');
     })->name('user.dashboard');
 });
+
+
