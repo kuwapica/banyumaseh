@@ -28,6 +28,14 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 // Pesanan Routes
 Route::get('/pesan-tiket', [PesananController::class, 'index'])->name('pesan_tiket');
 Route::post('/pesan-tiket', [PesananController::class, 'store'])->name('pesan_tiket.store');
+<<<<<<< HEAD
+=======
+Route::get('/pesan-tiket/daftar', [PesananController::class, 'daftarPesanan'])->name('pesan_tiket.show');
+
+Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
+Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
+
+>>>>>>> 7a8a929 (pesanan baruuuu)
 Route::post('/pesan/{destinasi}', [PesananController::class, 'store'])
     ->name('pesan.store')
     ->middleware('auth');
@@ -35,6 +43,11 @@ Route::post('/pesan/{destinasi}', [PesananController::class, 'store'])
 // Daftar Pesanan Routes - hapus yang duplikat
 Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->middleware('auth')->name('daftar_pesanan');
 Route::delete('/pesanan/{pesanan}/cancel', [PesananController::class, 'cancel'])->name('pesanan.cancel');
+<<<<<<< HEAD
+=======
+Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->name('daftar_pesanan');
+Route::post('/pesanan/{pesanan}/upload-bukti', [PesananController::class, 'uploadBukti'])->name('pesanan.upload_bukti');
+>>>>>>> 7a8a929 (pesanan baruuuu)
 
 // Other Pages - commented out until controllers are created
 // Route::get('/culinary', 'CulinaryController@index')->name('culinary');
@@ -45,6 +58,7 @@ Route::delete('/pesanan/{pesanan}/cancel', [PesananController::class, 'cancel'])
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+<<<<<<< HEAD
     Route::resource('/admin/destinasi', AdminDestinasiController::class)->names([
         'index' => 'admin.destinasi.index',
         'create' => 'admin.destinasi.create',
@@ -66,6 +80,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/pesanan', [AdminPesananController::class, 'index'])->name('admin.customer_pesanan');
     Route::get('/admin/pesanan/{id}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
     Route::patch('/admin/pesanan/{id}/status', [AdminPesananController::class, 'updateStatus'])->name('admin.pesanan.updateStatus');
+=======
+    Route::resource('/admin/destinasi', AdminDestinasiController::class);
+    Route::resource('/admin/user', AdminUserController::class);
+    // Route untuk pesanan
+    Route::get('/admin/pesanan', [AdminPesananController::class, 'index'])->name('pesanan.index');
+    Route::get('/admin/pesanan/{pesanan}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
+    Route::patch('/admin/pesanan/{pesanan}/status', [AdminPesananController::class, 'updateStatus'])->name('admin.pesanan.updateStatus');
+>>>>>>> 7a8a929 (pesanan baruuuu)
 });
 
 // User Routes

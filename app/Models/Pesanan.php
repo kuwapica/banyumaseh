@@ -20,7 +20,8 @@ class Pesanan extends Model
         'harga_tiket',
         'total_bayar',
         'status',
-        'kode_booking'
+        'kode_booking',
+        'bukti_pembayaran'
     ];
 
     protected $casts = [
@@ -28,6 +29,11 @@ class Pesanan extends Model
         'harga_tiket' => 'decimal:2',
         'total_bayar' => 'decimal:2'
     ];
+
+    public function getBuktiPembayaranUrlAttribute()
+    {
+        return $this->bukti_pembayaran ? asset('storage/' . $this->bukti_pembayaran) : null;
+    }
 
     public function user()
     {

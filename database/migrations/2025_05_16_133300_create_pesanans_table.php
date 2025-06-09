@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('harga_tiket', 10, 2);
             $table->decimal('total_bayar', 10, 2);
             $table->string('status')->default('pending');
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('kode_booking')->unique();
             $table->timestamps();
         });

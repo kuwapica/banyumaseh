@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Destinasi;
 use App\Models\Pesanan;
 use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PesananController extends Controller
 {
+    use AuthorizesRequests;
     public function index()
     {
         $destinasis = Destinasi::all();
@@ -46,11 +48,11 @@ class PesananController extends Controller
         'total_bayar' => $total_bayar,
         'kode_booking' => $kode_booking,
         'status' => 'pending',
+        'bukti_pembayaran' => null
     ]);
 
     return redirect()->route('daftar_pesanan')->with('success', 'Pesanan berhasil dibuat.');
 }
-
     
     public function daftarPesanan()
     {
@@ -60,7 +62,13 @@ class PesananController extends Controller
     
     public function cancel(Pesanan $pesanan)
     {
+        // Option 1: Using policy authorization
         $this->authorize('cancel', $pesanan);
+        
+        // OR Option 2: Manual authorization check
+        // if (Auth::id() !== $pesanan->user_id) {
+        //     abort(403);
+        // }
         
         if ($pesanan->status !== 'pending') {
             return back()->with('error', 'Hanya pesanan pending yang bisa dibatalkan.');
@@ -69,5 +77,28 @@ class PesananController extends Controller
         $pesanan->update(['status' => 'canceled']);
         
         return back()->with('success', 'Pesanan berhasil dibatalkan.');
+    }
+    
+    public function uploadBukti(Request $request, Pesanan $pesanan)
+    {
+        $request->validate([
+            'bukti_pembayaran' => 'required|file|mimes:jpg,png,pdf|max:2048'
+        ]);
+
+        // Pastikan hanya pemilik pesanan yang bisa upload
+        if ($pesanan->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        // Upload file
+        if ($request->hasFile('bukti_pembayaran')) {
+            $path = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
+            $pesanan->update([
+                'bukti_pembayaran' => $path,
+                'status' => 'waiting_verification' // Status menunggu verifikasi admin
+            ]);
+        }
+
+        return back()->with('success', 'Bukti pembayaran berhasil diupload! Menunggu verifikasi admin.');
     }
 }

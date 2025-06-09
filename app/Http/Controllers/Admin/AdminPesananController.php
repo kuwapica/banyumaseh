@@ -2,33 +2,34 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class AdminPesananController extends Controller
 {
     public function index()
     {
-        $pesanans = Pesanan::with('user', 'destinasi')->latest()->get();
+        $pesanans = Pesanan::with(['user', 'destinasi'])
+            ->latest()
+            ->paginate(10);
+            
         return view('admin.customer_pesanan', compact('pesanans'));
     }
 
-    public function show($id)
+    public function show(Pesanan $pesanan)
     {
-        $pesanan = Pesanan::with('user', 'destinasi')->findOrFail($id);
-        return view('admin.pesanan.show', compact('pesanan'));
+        return view('admin.detail_customer_pesanan', compact('pesanan'));
     }
 
-    public function updateStatus(Request $request, $id)
+    public function updateStatus(Request $request, Pesanan $pesanan)
     {
         $request->validate([
-            'status' => 'required|in:pending,confirmed,canceled',
+            'status' => 'required|in:confirmed,canceled'
         ]);
 
-        $pesanan = Pesanan::findOrFail($id);
         $pesanan->update(['status' => $request->status]);
 
-        return redirect()->route('admin.customer_pesanan')->with('success', 'Status pesanan diperbarui.');
+        return back()->with('success', 'Status pesanan berhasil diperbarui');
     }
 }
