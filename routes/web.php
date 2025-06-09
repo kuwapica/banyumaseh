@@ -16,6 +16,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Destinasi Routes
 Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
+Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('destinasi.show');
 Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
 
 // Authentication Routes
@@ -37,7 +38,7 @@ Route::post('/pesan/{destinasi}', [PesananController::class, 'store'])
     ->name('pesan.store')
     ->middleware('auth');
 
-// Daftar Pesanan Routes - hapus yang duplikat
+// Daftar Pesanan Routes
 Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->middleware('auth')->name('daftar_pesanan');
 Route::delete('/pesanan/{pesanan}/cancel', [PesananController::class, 'cancel'])->name('pesanan.cancel');
 Route::get('/daftar-pesanan', [PesananController::class, 'daftarPesanan'])->name('daftar_pesanan');

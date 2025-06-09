@@ -19,7 +19,7 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        // Debug - hapus setelah berhasil
+        // Debug
         // dd($featuredDestinations->toArray());
 
         return view('home', compact('featuredDestinations', 'mainDestinations'));

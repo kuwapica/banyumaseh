@@ -50,4 +50,15 @@ class DestinasiController extends Controller
 
         return view('destinasi', compact('destinations', 'categories'));
     }
+
+    public function show(Destinasi $destinasi)
+    {
+        // Ambil destinasi terkait berdasarkan kategori yang sama (maksimal 4)
+        $relatedDestinations = Destinasi::where('category', $destinasi->category)
+            ->where('id', '!=', $destinasi->id)
+            ->take(4)
+            ->get();
+
+        return view('destinasi-detail', compact('destinasi', 'relatedDestinations'));
+    }
 }

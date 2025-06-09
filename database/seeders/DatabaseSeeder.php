@@ -159,8 +159,8 @@ class DatabaseSeeder extends Seeder
             ]
         ];
 
-        foreach ($destinations as $destination) {
-            Destinasi::create($destination);
+        foreach ($destinations as $destinasi) {
+            Destinasi::create($destinasi);
         }
     }
 }

@@ -107,17 +107,17 @@
                 <!-- Destinations Grid -->
                 @if ($destinations->count() > 0)
                     <div class="row">
-                        @foreach ($destinations as $destination)
+                        @foreach ($destinations as $destinasi)
                             <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
                                 <div class="card h-100 shadow-sm destination-card">
                                     <!-- Image -->
                                     <div class="position-relative">
-                                        <img src="{{ $destination->image ? asset('storage/' . $destination->image) : 'https://via.placeholder.com/400x250?text=No+Image' }}"
-                                            class="card-img-top" alt="{{ $destination->name }}"
+                                        <img src="{{ $destinasi->image ? asset('storage/' . $destinasi->image) : 'https://via.placeholder.com/400x250?text=No+Image' }}"
+                                            class="card-img-top" alt="{{ $destinasi->name }}"
                                             style="height: 200px; object-fit: cover;">
 
                                         <!-- Featured Badge -->
-                                        @if ($destination->featured)
+                                        @if ($destinasi->featured)
                                             <span class="badge bg-warning position-absolute top-0 start-0 m-2">
                                                 <i class="fas fa-star me-1"></i>Featured
                                             </span>
@@ -125,52 +125,52 @@
 
                                         <!-- Category Badge -->
                                         <span class="badge bg-primary position-absolute top-0 end-0 m-2">
-                                            {{ $destination->category }}
+                                            {{ $destinasi->category }}
                                         </span>
                                     </div>
 
                                     <!-- Card Body -->
                                     <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title fw-bold">{{ $destination->name }}</h5>
+                                        <h5 class="card-title fw-bold">{{ $destinasi->name }}</h5>
 
                                         <!-- Location -->
                                         <div class="d-flex align-items-center text-muted mb-2">
                                             <i class="fas fa-map-marker-alt me-2"></i>
-                                            <small>{{ $destination->location }}</small>
+                                            <small>{{ $destinasi->location }}</small>
                                         </div>
 
                                         <!-- Rating -->
                                         <div class="d-flex align-items-center mb-2">
                                             <div class="text-warning me-2">
                                                 @for ($i = 1; $i <= 5; $i++)
-                                                    @if ($i <= floor($destination->rating))
+                                                    @if ($i <= floor($destinasi->rating))
                                                         <i class="fas fa-star"></i>
-                                                    @elseif($i - 0.5 <= $destination->rating)
+                                                    @elseif($i - 0.5 <= $destinasi->rating)
                                                         <i class="fas fa-star-half-alt"></i>
                                                     @else
                                                         <i class="far fa-star"></i>
                                                     @endif
                                                 @endfor
                                             </div>
-                                            <span class="fw-bold">{{ $destination->rating }}</span>
+                                            <span class="fw-bold">{{ $destinasi->rating }}</span>
                                             <small class="text-muted ms-1">({{ rand(10, 500) }} reviews)</small>
                                         </div>
 
                                         <!-- Description -->
                                         <p class="card-text text-muted flex-grow-1">
-                                            {{ Str::limit($destination->description, 100) }}
+                                            {{ Str::limit($destinasi->description, 100) }}
                                         </p>
 
                                         <!-- Price & Button -->
                                         <div class="d-flex justify-content-between align-items-center mt-auto">
                                             <div>
                                                 <span class="h5 text-primary fw-bold">Rp
-                                                    {{ number_format($destination->price, 0, ',', '.') }}</span>
+                                                    {{ number_format($destinasi->price, 0, ',', '.') }}</span>
                                                 <small class="text-muted d-block">per orang</small>
                                             </div>
-                                            <button class="btn btn-primary btn-sm">
+                                            <a href="{{ route('destinasi.show', $destinasi) }}" class="btn btn-primary btn-sm">
                                                 <i class="fas fa-eye me-1"></i>Detail
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

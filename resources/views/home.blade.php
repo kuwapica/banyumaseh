@@ -12,14 +12,14 @@
     <section id="hero-carousel" class="position-relative">
         <div id="destinationCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-indicators">
-                @foreach($featuredDestinations as $index => $destination)
+                @foreach($featuredDestinations as $index => $destinasi)
                     <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="{{ $index }}" 
                             class="{{ $index == 0 ? 'active' : '' }}"></button>
                 @endforeach
             </div>
             
             <div class="carousel-inner">
-                @foreach($featuredDestinations as $index => $destination)
+                @foreach($featuredDestinations as $index => $destinasi)
                     @php
                         $heroImage = asset('images/' . $heroImages[$index % count($heroImages)]);
                     @endphp
@@ -31,28 +31,28 @@
                                     <div class="col-lg-8">
                                         <div class="hero-content text-white">
                                             <span class="badge bg-primary mb-3 px-3 py-2">Featured Destination</span>
-                                            <h1 class="display-2 fw-bold mb-4">{{ $destination->name }}</h1>
+                                            <h1 class="display-2 fw-bold mb-4">{{ $destinasi->name }}</h1>
                                             <div class="d-flex align-items-center mb-3">
                                                 <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                                <span class="fs-5">{{ $destination->location }}</span>
+                                                <span class="fs-5">{{ $destinasi->location }}</span>
                                             </div>
                                             <div class="d-flex align-items-center mb-4">
                                                 <div class="text-warning me-3">
                                                     @for($i = 1; $i <= 5; $i++)
-                                                        @if($i <= floor($destination->rating))
+                                                        @if($i <= floor($destinasi->rating))
                                                             <i class="fas fa-star"></i>
-                                                        @elseif($i - 0.5 <= $destination->rating)
+                                                        @elseif($i - 0.5 <= $destinasi->rating)
                                                             <i class="fas fa-star-half-alt"></i>
                                                         @else
                                                             <i class="far fa-star"></i>
                                                         @endif
                                                     @endfor
                                                 </div>
-                                                <span class="fs-5 fw-bold me-3">{{ $destination->rating }}</span>
-                                                <span class="fs-4 fw-bold text-primary">Rp {{ number_format($destination->price, 0, ',', '.') }} <small class="fs-6 text-white-50">/orang</small></span>
+                                                <span class="fs-5 fw-bold me-3">{{ $destinasi->rating }}</span>
+                                                <span class="fs-4 fw-bold text-primary">Rp {{ number_format($destinasi->price, 0, ',', '.') }} <small class="fs-6 text-white-50">/orang</small></span>
                                             </div>
                                             <p class="fs-5 mb-4 text-white-75" style="max-width: 600px;">
-                                                {{ $destination->description }}
+                                                {{ $destinasi->description }}
                                             </p>
                                             <div class="d-flex gap-3">
                                                 <a href="#" class="btn btn-primary btn-lg px-4 py-3">
@@ -97,7 +97,7 @@
 
             <!-- Destinations Grid -->
             <div class="row g-4">
-                @foreach($mainDestinations as $destination)
+                @foreach($mainDestinations as $destinasi)
                     @php
                         $destinationImage = asset('images/' . $destinationImages[$loop->index % count($destinationImages)]);
                     @endphp
@@ -105,7 +105,7 @@
                         <div class="card h-100 shadow-sm destination-card border-0">
                             <div class="position-relative overflow-hidden">
                                 <img src="{{ $destinationImage }}" 
-                                     class="card-img-top destination-img" alt="{{ $destination->name }}" style="height: 250px; object-fit: cover;">
+                                     class="card-img-top destination-img" alt="{{ $destinasi->name }}" style="height: 250px; object-fit: cover;">
                                 
                                 <!-- Featured Badge -->
                                 <span class="badge bg-primary position-absolute top-0 start-0 m-3">
@@ -114,7 +114,7 @@
 
                                 <!-- Category Badge -->
                                 <span class="badge bg-success position-absolute top-0 end-0 m-3">
-                                    {{ $destination->category }}
+                                    {{ $destinasi->category }}
                                 </span>
 
                                 <!-- Overlay -->
@@ -125,38 +125,38 @@
                                 <!-- Location -->
                                 <div class="d-flex align-items-center text-muted mb-3">
                                     <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                    <small>{{ $destination->location }}</small>
+                                    <small>{{ $destinasi->location }}</small>
                                 </div>
 
                                 <!-- Title -->
-                                <h5 class="card-title fw-bold mb-3">{{ $destination->name }}</h5>
+                                <h5 class="card-title fw-bold mb-3">{{ $destinasi->name }}</h5>
 
                                 <!-- Rating -->
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="text-warning me-2">
                                         @for($i = 1; $i <= 5; $i++)
-                                            @if($i <= floor($destination->rating))
+                                            @if($i <= floor($destinasi->rating))
                                                 <i class="fas fa-star"></i>
-                                            @elseif($i - 0.5 <= $destination->rating)
+                                            @elseif($i - 0.5 <= $destinasi->rating)
                                                 <i class="fas fa-star-half-alt"></i>
                                             @else
                                                 <i class="far fa-star"></i>
                                             @endif
                                         @endfor
                                     </div>
-                                    <span class="fw-bold me-2">{{ $destination->rating }}</span>
+                                    <span class="fw-bold me-2">{{ $destinasi->rating }}</span>
                                     <small class="text-muted">({{ rand(10, 500) }} reviews)</small>
                                 </div>
 
                                 <!-- Description -->
                                 <p class="card-text text-muted mb-4" style="font-size: 0.9rem; line-height: 1.6;">
-                                    {{ Str::limit($destination->description, 100) }}...
+                                    {{ Str::limit($destinasi->description, 100) }}...
                                 </p>
 
                                 <!-- Price and Button -->
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <span class="h5 text-primary fw-bold">Rp {{ number_format($destination->price, 0, ',', '.') }}</span>
+                                        <span class="h5 text-primary fw-bold">Rp {{ number_format($destinasi->price, 0, ',', '.') }}</span>
                                         <small class="text-muted d-block">per orang</small>
                                     </div>
                                     <a href="#" class="btn btn-primary btn-sm px-3">
