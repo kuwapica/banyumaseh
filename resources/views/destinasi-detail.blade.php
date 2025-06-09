@@ -8,7 +8,7 @@
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('destinasi.index') }}">Destinasi</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('destination') }}">Destinasi</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $destinasi->name }}</li>
             </ol>
         </nav>
@@ -22,7 +22,7 @@
                         <img src="{{ $destinasi->image ? asset('storage/' . $destinasi->image) : 'https://via.placeholder.com/800x400?text=No+Image' }}"
                             class="card-img-top" alt="{{ $destinasi->name }}"
                             style="height: 400px; object-fit: cover; border-radius: 0.375rem;">
-                        
+
                         <!-- Featured Badge -->
                         @if ($destinasi->featured)
                             <span class="badge bg-warning position-absolute top-0 start-0 m-3 fs-6">
@@ -131,8 +131,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="tanggal_kunjungan" class="form-label">Tanggal Kunjungan</label>
-                                <input type="date" class="form-control" id="tanggal_kunjungan" 
-                                    name="tanggal_kunjungan" required min="{{ date('Y-m-d') }}">
+                                <input type="date" class="form-control" id="tanggal_kunjungan" name="tanggal_kunjungan"
+                                    required min="{{ date('Y-m-d') }}">
                             </div>
 
                             <div class="mb-3">
@@ -189,18 +189,18 @@
         </div>
 
         <!-- Related Destinations -->
-        @if($relatedDestinations->count() > 0)
+        @if ($relatedDestinations->count() > 0)
             <div class="row mt-5">
                 <div class="col-12">
                     <h3 class="mb-4">Destinasi Serupa</h3>
                     <div class="row">
-                        @foreach($relatedDestinations as $related)
+                        @foreach ($relatedDestinations as $related)
                             <div class="col-lg-3 col-md-6 mb-4">
                                 <div class="card h-100 shadow-sm">
                                     <img src="{{ $related->image ? asset('storage/' . $related->image) : 'https://via.placeholder.com/300x200?text=No+Image' }}"
                                         class="card-img-top" alt="{{ $related->name }}"
                                         style="height: 200px; object-fit: cover;">
-                                    
+
                                     <div class="card-body d-flex flex-column">
                                         <h6 class="card-title">{{ $related->name }}</h6>
                                         <p class="card-text text-muted small flex-grow-1">
@@ -210,7 +210,8 @@
                                             <span class="text-primary fw-bold">
                                                 Rp {{ number_format($related->price, 0, ',', '.') }}
                                             </span>
-                                            <a href="{{ route('destinasi.show', $related) }}" class="btn btn-sm btn-outline-primary">
+                                            <a href="{{ route('destinasi.show', $related) }}"
+                                                class="btn btn-sm btn-outline-primary">
                                                 Lihat
                                             </a>
                                         </div>

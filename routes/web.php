@@ -16,8 +16,8 @@ use App\Http\Controllers\Admin\AdminProfilController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Destinasi Routes
-Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
-Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('destinasi.show');
+// Route::get('/destinasi', [DestinasiController::class, 'index'])->name('user.destinasi.index');
+Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('user.destinasi.show');
 Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
 
 // Authentication Routes
@@ -66,7 +66,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 // User Routes
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/beranda', function () {
-        return view('home');
-    })->name('user.dashboard');
+    // Route::get('/beranda', function () {
+    //     return view('home');
+    // })->name('user.dashboard');
+    Route::get('/beranda', [HomeController::class, 'index'])->name('user.dashboard');
 });

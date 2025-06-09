@@ -168,7 +168,8 @@
                                                     {{ number_format($destinasi->price, 0, ',', '.') }}</span>
                                                 <small class="text-muted d-block">per orang</small>
                                             </div>
-                                            <a href="{{ route('destinasi.show', $destinasi) }}" class="btn btn-primary btn-sm">
+                                            <a href="{{ route('user.destinasi.show', $destinasi) }}"
+                                                class="btn btn-primary btn-sm">
                                                 <i class="fas fa-eye me-1"></i>Detail
                                             </a>
                                         </div>
