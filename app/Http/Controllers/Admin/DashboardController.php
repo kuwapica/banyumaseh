@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Destinasi;
+use App\Models\Pesanan;
 
 class DashboardController extends Controller
 {
@@ -13,9 +14,11 @@ class DashboardController extends Controller
     {
         $totalUsers = User::count();
         $totalDestinasi = Destinasi::count();
+        $totalPesanan = Pesanan::count();
         return view('admin.dashboard', compact(
             'totalUsers',
-            'totalDestinasi'
+            'totalDestinasi',
+            'totalPesanan'
         ));
     }
 }
