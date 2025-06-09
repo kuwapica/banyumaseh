@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Destinasi;
 use App\Models\Category;
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // Seed Users
         User::firstOrCreate(
             ['email' => 'test@example.com'],
-            ['name' => 'Test User']
+            ['name' => 'Test User', 'password' => Hash::make('password')]
         );
 
         // Seed Categories
