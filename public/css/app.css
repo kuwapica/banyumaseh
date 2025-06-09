@@ -174,6 +174,80 @@ body {
     margin: 0 auto;
 }
 
+/* Hero Carousel Styles */
+.hero-slide {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-control-prev {
+    left: 30px;
+}
+
+.carousel-control-next {
+    right: 30px;
+}
+
+.carousel-indicators {
+    bottom: 30px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
 /* Cards */
 .card {
     transition: all 0.3s ease;
@@ -187,8 +261,38 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
+/* Destination Cards */
 .destination-card {
+    transition: all 0.4s ease;
+    border-radius: 15px !important;
     overflow: hidden;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.destination-img {
+    transition: transform 0.4s ease;
+}
+
+.destination-card:hover .destination-img {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0);
+    transition: background 0.3s ease;
+}
+
+.destination-card:hover .card-overlay {
+    background: rgba(0,0,0,0.1);
 }
 
 .destination-card .card-img-top {
@@ -244,6 +348,10 @@ body {
     margin-top: 1rem;
     color: var(--text-gray);
     line-height: 1.6;
+}
+
+#featured-destinations {
+    padding: 80px 0;
 }
 
 /* Services Section */
@@ -396,6 +504,13 @@ body {
     border-radius: 0.375rem;
 }
 
+.badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
 /* Stars Rating */
 .text-warning {
     color: var(--warning-color) !important;
@@ -416,6 +531,11 @@ body {
     --bs-pagination-focus-color: #19b3a4;
     --bs-pagination-active-bg: var(--primary-color);
     --bs-pagination-active-border-color: var(--primary-color);
+}
+
+/* Typography */
+.tracking-wider {
+    letter-spacing: 0.1em;
 }
 
 /* Footer Styles */
@@ -562,7 +682,7 @@ footer .text-muted {
     filter: invert(1);
 }
 
-/* Responsive adjustments */
+/* Responsive Styles */
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
@@ -617,6 +737,36 @@ footer .text-muted {
         font-size: 1rem;
     }
     
+    .hero-content h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-content .fs-5 {
+        font-size: 1rem !important;
+    }
+    
+    .hero-content .fs-4 {
+        font-size: 1.25rem !important;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .carousel-control-prev {
+        left: 15px;
+    }
+    
+    .carousel-control-next {
+        right: 15px;
+    }
+    
+    .destination-card:hover {
+        transform: translateY(-5px);
+    }
+    
     #featured .featured-row,
     #services .services-row {
         grid-template-columns: 1fr;
@@ -648,6 +798,20 @@ footer .text-muted {
     
     footer .social-links {
         justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2rem !important;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+    }
+    
+    .d-flex.gap-3 .btn {
+        margin-bottom: 0.5rem;
     }
 }
 

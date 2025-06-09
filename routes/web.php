@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -25,6 +26,9 @@ Route::get('/culinary', 'CulinaryController@index')->name('culinary');
 Route::get('/regional-art', 'RegionalArtController@index')->name('regional-art');
 Route::get('/history', 'HistoryController@index')->name('history');
 Route::get('/about', 'AboutController@index')->name('about');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
