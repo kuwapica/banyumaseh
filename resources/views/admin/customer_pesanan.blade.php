@@ -9,14 +9,17 @@
             font-size: 12px;
             font-weight: 600;
         }
+
         .status-pending {
             background-color: #fff3cd;
             color: #856404;
         }
+
         .status-confirmed {
             background-color: #d4edda;
             color: #155724;
         }
+
         .status-canceled {
             background-color: #f8d7da;
             color: #721c24;
@@ -69,29 +72,31 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.pesanan.show', $pesanan->id) }}" 
-                                           class="btn btn-sm btn-info">
+                                        <a href="{{ route('admin.pesanan.show', $pesanan->id) }}"
+                                            class="btn btn-sm btn-info">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        @if($pesanan->status == 'pending')
-                                        <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('PATCH')
-                                            <input type="hidden" name="status" value="confirmed">
-                                            <button type="submit" class="btn btn-sm btn-success" 
+                                        @if ($pesanan->status == 'pending')
+                                            <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}"
+                                                method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="status" value="confirmed">
+                                                <button type="submit" class="btn btn-sm btn-success"
                                                     onclick="return confirm('Konfirmasi pesanan ini?')">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                        </form>
-                                        <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('PATCH')
-                                            <input type="hidden" name="status" value="canceled">
-                                            <button type="submit" class="btn btn-sm btn-danger" 
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}"
+                                                method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="status" value="canceled">
+                                                <button type="submit" class="btn btn-sm btn-danger"
                                                     onclick="return confirm('Batalkan pesanan ini?')">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </form>
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>
@@ -124,10 +129,10 @@
             }
 
             $('#dataTable').DataTable({
-                paging: false,      // Nonaktifkan pagination karena sudah pakai Laravel
-                searching: false,   // Nonaktifkan searching jika tidak perlu
-                info: false,        // Nonaktifkan info "Showing 1 to x of y"
-                ordering: true,     // Aktifkan jika ingin sorting tetap ada
+                paging: false, // Nonaktifkan pagination karena sudah pakai Laravel
+                searching: false, // Nonaktifkan searching jika tidak perlu
+                info: false, // Nonaktifkan info "Showing 1 to x of y"
+                ordering: true, // Aktifkan jika ingin sorting tetap ada
                 language: {
                     url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Indonesian.json"
                 }

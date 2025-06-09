@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminDestinasiController;
 use App\Http\Controllers\Admin\AdminPesananController;
+use App\Http\Controllers\Admin\AdminProfilController;
 
 // Home Route - menggunakan HomeController
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -55,6 +56,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/destinasi', AdminDestinasiController::class);
     Route::resource('/admin/user', AdminUserController::class);
+    Route::get('admin/profil/edit', [AdminProfilController::class, 'edit'])->name('admin.profil.edit');
+    Route::put('admin/profil', [AdminProfilController::class, 'update'])->name('admin.profil.update');
     // Route untuk pesanan
     Route::get('/admin/pesanan', [AdminPesananController::class, 'index'])->name('pesanan.index');
     Route::get('/admin/pesanan/{pesanan}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
