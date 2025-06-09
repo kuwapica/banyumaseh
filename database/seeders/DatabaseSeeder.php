@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Curug Cipendok',
                 'description' => 'Air terjun yang indah dengan ketinggian 92 meter, dikelilingi hutan pinus yang asri. Tempat yang sempurna untuk refreshing dan menikmati keindahan alam.',
-                'image' => 'curug-cipendok.jpg',
+                'image' => 'Curug-Cipendok.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.6,
                 'price' => 15000.00,
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Baturraden',
                 'description' => 'Objek wisata pegunungan dengan pemandian air panas alami, udara sejuk, dan berbagai wahana menarik untuk keluarga.',
-                'image' => 'baturraden.jpg',
+                'image' => 'Baturradenn.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.4,
                 'price' => 25000.00,
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Museum Wayang',
                 'description' => 'Museum yang menyimpan koleksi wayang terlengkap di Indonesia, menampilkan kekayaan budaya tradisional Jawa.',
-                'image' => 'museum-wayang.jpg',
+                'image' => 'Museum-Wayang.jpg',
                 'category' => 'Wisata Budaya',
                 'rating' => 4.2,
                 'price' => 10000.00,
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Telaga Sunyi',
                 'description' => 'Danau kecil yang tenang di tengah hutan, tempat yang sempurna untuk meditasi dan menikmati keheningan alam.',
-                'image' => 'telaga-sunyi.jpg',
+                'image' => 'Telaga-Sunyi.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.3,
                 'price' => 12000.00,
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Pendopo Si Panji',
                 'description' => 'Bangunan bersejarah peninggalan Kerajaan Pajang dengan arsitektur tradisional Jawa yang megah.',
-                'image' => 'pendopo-sipanji.jpg',
+                'image' => 'Pendopo-Si-Panji.jpg',
                 'category' => 'Wisata Sejarah',
                 'rating' => 4.0,
                 'price' => 8000.00,
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Goa Sarabadak',
                 'description' => 'Goa alam dengan stalaktit dan stalakmit yang menakjubkan, petualangan seru untuk para pencinta speleologi.',
-                'image' => 'goa-sarabadak.jpg',
+                'image' => 'Goa-Sarabadak.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.1,
                 'price' => 20000.00,
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Owabong Water Park',
                 'description' => 'Taman air terbesar di Jawa Tengah dengan berbagai wahana seru dan kolam renang untuk semua usia.',
-                'image' => 'owabong.jpg',
+                'image' => 'Owabong-Water-Park.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.5,
                 'price' => 35000.00,
@@ -110,7 +110,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Sate Buntel Pak Gambir',
                 'description' => 'Kuliner khas Banyumas berupa sate daging kambing yang dibungkus lemak, cita rasa autentik yang tak terlupakan.',
-                'image' => 'sate-buntel.jpg',
+                'image' => 'Sate-Buntel-Pak-Gambir.jpg',
                 'category' => 'Wisata Kuliner',
                 'rating' => 4.7,
                 'price' => 5000.00,
@@ -120,7 +120,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Curug Jenggala',
                 'description' => 'Air terjun tersembunyi dengan tiga tingkatan yang indah, cocok untuk hiking dan fotografi alam.',
-                'image' => 'curug-jenggala.jpg',
+                'image' => 'Curug-Jenggala.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.3,
                 'price' => 10000.00,
@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Mendut Noodle',
                 'description' => 'Rumah mie legendaris Banyumas dengan kuah kaldu sapi yang gurih dan mie kenyal buatan sendiri.',
-                'image' => 'mendut-noodle.jpg',
+                'image' => 'Mendut-Noodle.jpg',
                 'category' => 'Wisata Kuliner',
                 'rating' => 4.4,
                 'price' => 18000.00,
@@ -140,7 +140,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Gunung Slamet',
                 'description' => 'Gunung tertinggi di Jawa Tengah dengan pendakian menantang dan pemandangan sunrise yang spektakuler.',
-                'image' => 'gunung-slamet.jpg',
+                'image' => 'Gunung-Slamet.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.8,
                 'price' => 50000.00,
@@ -150,7 +150,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Alun-alun Purwokerto',
                 'description' => 'Pusat kota dengan taman yang asri, tempat berkumpul masyarakat dan berbagai acara budaya.',
-                'image' => 'alun-alun.jpg',
+                'image' => 'Alun-Alun-Purwokerto.jpg',
                 'category' => 'Wisata Budaya',
                 'rating' => 4.0,
                 'price' => 0.00,

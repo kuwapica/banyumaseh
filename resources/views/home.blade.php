@@ -3,6 +3,11 @@
 @section('title', 'Home')
 
 @section('content')
+    @php
+    $heroImages = ['Gunung-Slamet.jpg', 'Sate-Buntel-Pak-Gambir.jpg', 'Curug-Cipendok.jpg', 'Owabong-Water-Park.jpg'];
+
+    $destinationImages = ['Gunung-Slamet.jpg', 'Sate-Buntel-Pak-Gambir.jpg', 'Curug-Cipendok.jpg'];
+    @endphp
     <!-- Hero Carousel Section -->
     <section id="hero-carousel" class="position-relative">
         <div id="destinationCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -15,8 +20,11 @@
             
             <div class="carousel-inner">
                 @foreach($featuredDestinations as $index => $destination)
+                    @php
+                        $heroImage = asset('images/' . $heroImages[$index % count($heroImages)]);
+                    @endphp
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <div class="hero-slide" style="background-image: url('https://images.pexels.com/photos/{{ 1562 + $index }}/italian-landscape-mountains-nature.jpg?auto=compress&cs=tinysrgb&w=1200');">
+                        <div class="hero-slide" style="background-image: url('{{ $heroImage }}');">
                             <div class="hero-overlay"></div>
                             <div class="container">
                                 <div class="row align-items-center min-vh-100">
@@ -90,10 +98,13 @@
             <!-- Destinations Grid -->
             <div class="row g-4">
                 @foreach($mainDestinations as $destination)
+                    @php
+                        $destinationImage = asset('images/' . $destinationImages[$loop->index % count($destinationImages)]);
+                    @endphp
                     <div class="col-lg-4 col-md-6">
                         <div class="card h-100 shadow-sm destination-card border-0">
                             <div class="position-relative overflow-hidden">
-                                <img src="https://images.pexels.com/photos/{{ 1562 + $loop->index }}/italian-landscape-mountains-nature.jpg?auto=compress&cs=tinysrgb&w=800" 
+                                <img src="{{ $destinationImage }}" 
                                      class="card-img-top destination-img" alt="{{ $destination->name }}" style="height: 250px; object-fit: cover;">
                                 
                                 <!-- Featured Badge -->
