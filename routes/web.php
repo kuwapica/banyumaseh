@@ -9,7 +9,7 @@ use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminDestinasiController;
-use App\Http\Controllers\AdminPesananController;
+use App\Http\Controllers\Admin\AdminPesananController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -74,5 +74,3 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('home');
     })->name('user.dashboard');
 });
-
-

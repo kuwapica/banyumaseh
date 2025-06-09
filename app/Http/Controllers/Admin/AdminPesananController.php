@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\Pesanan;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminPesananController extends Controller
 {

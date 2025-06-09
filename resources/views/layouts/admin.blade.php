@@ -70,7 +70,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Customer:</h6>
-                        <a class="collapse-item" href="">Daftar Pesanan</a>
+                        <a class="collapse-item" href="{{ route('admin.customer_pesanan') }}">Daftar Pesanan</a>
                     </div>
                 </div>
             </li>

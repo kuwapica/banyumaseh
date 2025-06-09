@@ -6,13 +6,15 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('destinasi.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('destinasi.update', $destinasi->id) }}" method="POST"
+                            enctype="multipart/form-data">
 
                             @csrf
+                            @method('PUT')
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">Nama Wisata</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name') }}" placeholder="Masukkan Judul Destinasi">
+                                    name="name" value="{{ old('name', $destinasi->name) }}">
 
                                 <!-- error message untuk name -->
                                 @error('name')
@@ -36,8 +38,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">Deskripsi</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5"
-                                    placeholder="Masukkan Deskripsi Destinasi">{{ old('description') }}</textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ old('description', $destinasi->description) }}</textarea>
 
                                 <!-- error message untuk description -->
                                 @error('description')
@@ -52,8 +53,7 @@
                                     <div class="form-group mb-3">
                                         <label class="font-weight-bold">Harga</label>
                                         <input type="number" class="form-control @error('price') is-invalid @enderror"
-                                            name="price" value="{{ old('price') }}"
-                                            placeholder="Masukkan Harga Destinasi">
+                                            name="price" value="{{ old('price', $destinasi->price) }}">
 
                                         <!-- error message untuk price -->
                                         @error('price')
@@ -67,7 +67,8 @@
                                     <div class="form-group mb-3">
                                         <label class="font-weight-bold">Lokasi</label>
                                         <input type="text" class="form-control @error('location') is-invalid @enderror"
-                                            name="location" value="{{ old('location') }}" placeholder="Masukkan Lokasi">
+                                            name="location" value="{{ old('location', $destinasi->location) }}"
+                                            placeholder="Masukkan Lokasi">
 
                                         <!-- error message untuk location -->
                                         @error('location')

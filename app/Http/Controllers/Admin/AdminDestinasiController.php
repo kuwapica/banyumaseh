@@ -55,7 +55,7 @@ class AdminDestinasiController extends Controller
      */
     public function show(Destinasi $destinasi)
     {
-        return view('destinasi.show', compact('destinasi'));
+        return view('admin.showdestinasi', compact('destinasi'));
     }
 
     /**
@@ -63,7 +63,7 @@ class AdminDestinasiController extends Controller
      */
     public function edit(Destinasi $destinasi)
     {
-        return view('destinasi.edit', compact('destinasi'));
+        return view('admin.editdestinasi', compact('destinasi'));
     }
 
     /**
