@@ -26,6 +26,8 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Deskripsi</th>
+                                <th scope="col">Fasilitas</th>
+                                <th scope="col">Jam Operasional</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Lokasi</th>
                                 <th scope="col" style="width: 20%">Aksi</th>
@@ -38,6 +40,32 @@
                                     <td><img src="{{ asset('storage/' . $destinasi->image) }}" class="rounded"
                                             style="width: 150px"></td>
                                     <td>{{ $destinasi->description }}</td>
+                                    <td>@php
+                                        $fasilitas = json_decode($destinasi->facilities, true);
+                                    @endphp
+                                        @if ($fasilitas && is_array($fasilitas))
+                                            <ul class="mb-0 ps-3">
+                                                @foreach ($fasilitas as $item)
+                                                    <li>{{ $item }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            <em>-</em>
+                                        @endif
+                                    </td>
+                                    <td>@php
+                                        $jam = json_decode($destinasi->operating_hours, true);
+                                    @endphp
+                                        @if ($jam && is_array($jam))
+                                            <ul class="mb-0 ps-3">
+                                                @foreach ($jam as $item)
+                                                    <li><strong>{{ $item['hari'] }}:</strong> {{ $item['jam'] }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            <em>-</em>
+                                        @endif
+                                    </td>
                                     <td>{{ 'Rp ' . number_format($destinasi->price, 2, ',', '.') }}</td>
                                     <td>{{ $destinasi->location }}</td>
                                     <td>

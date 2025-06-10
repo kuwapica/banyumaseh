@@ -48,6 +48,63 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label class="font-weight-bold">Fasilitas</label>
+                                <div id="fasilitas-wrapper">
+                                    @php
+                                        $fasilitas = old(
+                                            'facilities',
+                                            json_decode($destinasi->facilities ?? '[]', true),
+                                        );
+                                    @endphp
+
+                                    @foreach ($fasilitas as $index => $item)
+                                        <div class="input-group mt-2 mb-2 fasilitas-item">
+                                            <input type="text" name="facilities[]" class="form-control"
+                                                value="{{ $item }}" placeholder="Fasilitas">
+                                            <button type="button" class="btn btn-danger"
+                                                onclick="hapusBaris(this)">✕</button>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-primary mt-2"
+                                    onclick="tambahFasilitas()">+ Tambah Fasilitas</button>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="font-weight-bold">Jam Operasional</label>
+                                <div id="jam-operasional-wrapper">
+                                    @php
+                                        $jamList = old(
+                                            'operating_hours',
+                                            json_decode($destinasi->operating_hours ?? '[]', true),
+                                        );
+                                    @endphp
+
+                                    @foreach ($jamList as $i => $jam)
+                                        <div class="row mb-2 jam-item">
+                                            <div class="col-md-5">
+                                                <input type="text" name="operating_hours[{{ $i }}][hari]"
+                                                    class="form-control" placeholder="Hari (cth: Senin - Jumat)"
+                                                    value="{{ $jam['hari'] ?? '' }}">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input type="text" name="operating_hours[{{ $i }}][jam]"
+                                                    class="form-control" placeholder="Jam (cth: 08:00 - 17:00)"
+                                                    value="{{ $jam['jam'] ?? '' }}">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="hapusBaris(this)">✕</button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-primary mt-2"
+                                    onclick="tambahJamOperasional()">+ Tambah Jam Operasional</button>
+                            </div>
+
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -89,4 +146,46 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let jamIndex = 1;
+
+        function tambahFasilitas() {
+            const wrapper = document.getElementById('fasilitas-wrapper');
+            const input = document.createElement('div');
+            input.className = 'input-group mt-2 mb-2 fasilitas-item';
+            input.innerHTML = `
+            <input type="text" name="facilities[]" class="form-control" placeholder="Fasilitas">
+            <button type="button" class="btn btn-danger" onclick="hapusBaris(this)">✕</button>
+        `;
+            wrapper.appendChild(input);
+        }
+
+        function tambahJamOperasional() {
+            const wrapper = document.getElementById('jam-operasional-wrapper');
+            const html = `
+            <div class="row mb-2 jam-item">
+                <div class="col-md-5">
+                    <input type="text" name="operating_hours[${jamIndex}][hari]" class="form-control" placeholder="Hari (cth: Sabtu - Minggu)">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" name="operating_hours[${jamIndex}][jam]" class="form-control" placeholder="Jam (cth: 07:00 - 18:00)">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger" onclick="hapusBaris(this)">✕</button>
+                </div>
+            </div>
+        `;
+            wrapper.insertAdjacentHTML('beforeend', html);
+            jamIndex++;
+        }
+
+        function hapusBaris(button) {
+            const fasilitasRow = button.closest('.fasilitas-item');
+            const jamRow = button.closest('.jam-item');
+
+            if (fasilitasRow) fasilitasRow.remove();
+            else if (jamRow) jamRow.remove();
+        }
+    </script>
 @endsection

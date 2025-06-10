@@ -19,6 +19,32 @@
                         <p>Lokasi : {{ $destinasi->location }}</p>
                         <hr />
                         <p>Deskripsi : {{ $destinasi->description }}</p>
+                        <p>Fasilitas: @php
+                            $fasilitas = json_decode($destinasi->facilities, true);
+                        @endphp
+                            @if ($fasilitas && is_array($fasilitas))
+                                <ul class="mb-0 ps-3">
+                                    @foreach ($fasilitas as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <em>-</em>
+                            @endif
+                        </p>
+                        <p>Jam Operasional: @php
+                            $jam = json_decode($destinasi->operating_hours, true);
+                        @endphp
+                            @if ($jam && is_array($jam))
+                                <ul class="mb-0 ps-3">
+                                    @foreach ($jam as $item)
+                                        <li><strong>{{ $item['hari'] }}:</strong> {{ $item['jam'] }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <em>-</em>
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>

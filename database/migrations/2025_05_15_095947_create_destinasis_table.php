@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('category')->default('Wisata Alam');
             $table->decimal('rating', 2, 1)->default(0.0);
             $table->decimal('price', 10, 2)->default(0.00);
+            $table->text('facilities')->nullable();
+            $table->text('operating_hours')->nullable();
             $table->string('location');
             $table->boolean('featured')->default(false);
             $table->timestamps();
