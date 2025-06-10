@@ -78,52 +78,37 @@
                         <!-- Features -->
                         <div class="mb-4">
                             <h5 class="mb-3">Fasilitas</h5>
-                            @php
-                                $fasilitas = is_array($destinasi->facilities)
-                                    ? $destinasi->facilities
-                                    : json_decode($destinasi->facilities, true);
-
-                                $chunked = collect($fasilitas)->chunk(ceil(count($fasilitas) / 2));
-                            @endphp
-
                             <div class="row">
-                                @foreach ($chunked as $column)
-                                    <div class="col-md-6">
-                                        <ul class="list-unstyled">
-                                            @foreach ($column as $item)
-                                                <li class="mb-2"><i
-                                                        class="fas fa-check text-success me-2"></i>{{ $item }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endforeach
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Parkir luas</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Toilet bersih</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mushola</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Warung makan</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Spot foto</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Pemandu wisata</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-
 
                         <!-- Operating Hours -->
                         <div class="mb-4">
                             <h5 class="mb-3">Jam Operasional</h5>
-
-                            @php
-                                $jamOperasional = is_array($destinasi->operating_hours)
-                                    ? $destinasi->operating_hours
-                                    : json_decode($destinasi->operating_hours, true);
-
-                                $chunked = collect($jamOperasional)->chunk(ceil(count($jamOperasional) / 2));
-                            @endphp
-
                             <div class="row">
-                                @foreach ($chunked as $column)
-                                    <div class="col-md-6">
-                                        @foreach ($column as $item)
-                                            <p class="mb-1"><strong>{{ $item['hari'] }}:</strong> {{ $item['jam'] }}
-                                            </p>
-                                        @endforeach
-                                    </div>
-                                @endforeach
+                                <div class="col-md-6">
+                                    <p class="mb-1"><strong>Senin - Jumat:</strong> 08:00 - 17:00</p>
+                                    <p class="mb-1"><strong>Sabtu - Minggu:</strong> 07:00 - 18:00</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1"><strong>Libur Nasional:</strong> 07:00 - 18:00</p>
+                                    <p class="mb-1 text-muted"><small>*Jam dapat berubah sewaktu-waktu</small></p>
+                                </div>
                             </div>
-                            <p class="mb-1 text-muted mt-2"><small>*Jam dapat berubah sewaktu-waktu</small></p>
                         </div>
                     </div>
                 </div>
