@@ -163,9 +163,9 @@
                             </div>
 
                             @auth
-                                <button type="submit" class="btn btn-primary w-100 mb-3">
+                                <a href="{{ route('pesan_tiket', $destinasi) }}" class="btn btn-primary w-100 mb-3">
                                     <i class="fas fa-ticket-alt me-2"></i>Pesan Sekarang
-                                </button>
+                                </a>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-primary w-100 mb-3">
                                     <i class="fas fa-sign-in-alt me-2"></i>Login untuk Memesan
@@ -210,7 +210,7 @@
                                             <span class="text-primary fw-bold">
                                                 Rp {{ number_format($related->price, 0, ',', '.') }}
                                             </span>
-                                            <a href="{{ route('destinasi.show', $related) }}"
+                                            <a href="{{ route('user.destinasi.show', $related) }}"
                                                 class="btn btn-sm btn-outline-primary">
                                                 Lihat
                                             </a>
