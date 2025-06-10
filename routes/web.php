@@ -16,9 +16,9 @@ use App\Http\Controllers\Admin\AdminProfilController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Destinasi Routes
-// Route::get('/destinasi', [DestinasiController::class, 'index'])->name('user.destinasi.index');
-Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('user.destinasi.show');
-Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
+Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');        // List
+Route::get('/destination', [DestinasiController::class, 'show'])->name('destination');           // Detail (tanpa parameter)
+Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('user.destinasi.show'); // Detail (dengan parameter)
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

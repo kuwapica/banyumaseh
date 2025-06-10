@@ -8,7 +8,7 @@
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('destination') }}">Destinasi</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('user.destinasi.show', $destinasi) }}">Destinasi</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $destinasi->name }}</li>
             </ol>
         </nav>
