@@ -107,7 +107,7 @@
     <main class="@hasSection('header')
 ''
 @else
-py-4 mt-5
+
 @endif">
         @yield('content')
     </main>
