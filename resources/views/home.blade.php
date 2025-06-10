@@ -13,11 +13,11 @@
         <div id="destinationCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-indicators">
                 @foreach($featuredDestinations as $index => $destinasi)
-                    <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="{{ $index }}" 
+                    <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="{{ $index }}"
                             class="{{ $index == 0 ? 'active' : '' }}"></button>
                 @endforeach
             </div>
-            
+
             <div class="carousel-inner">
                 @foreach($featuredDestinations as $index => $destinasi)
                     @php
@@ -104,9 +104,9 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="card h-100 shadow-sm destination-card border-0">
                             <div class="position-relative overflow-hidden">
-                                <img src="{{ $destinationImage }}" 
+                                <img src="{{ $destinationImage }}"
                                      class="card-img-top destination-img" alt="{{ $destinasi->name }}" style="height: 250px; object-fit: cover;">
-                                
+
                                 <!-- Featured Badge -->
                                 <span class="badge bg-primary position-absolute top-0 start-0 m-3">
                                     <i class="fas fa-star me-1"></i>Featured
@@ -159,7 +159,8 @@
                                         <span class="h5 text-primary fw-bold">Rp {{ number_format($destinasi->price, 0, ',', '.') }}</span>
                                         <small class="text-muted d-block">per orang</small>
                                     </div>
-                                    <a href="#" class="btn btn-primary btn-sm px-3">
+                                    <a href="{{ route('user.destinasi.show', $destinasi) }}"
+                                        class="btn btn-primary btn-sm px-3">
                                         <i class="fas fa-eye me-1"></i>Detail
                                     </a>
                                 </div>
