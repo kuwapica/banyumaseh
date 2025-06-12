@@ -37,8 +37,11 @@
                             @forelse ($destinasis as $destinasi)
                                 <tr>
                                     <td>{{ $destinasi->name }}</td>
-                                    <td><img src="{{ asset('storage/' . $destinasi->image) }}" class="rounded"
-                                            style="width: 150px"></td>
+                                    <td>
+                                        <img src="{{ asset('images/' . $destinasi->image) }}"
+                                            onerror="this.onerror=null; this.src='{{ asset('storage/' . $destinasi->image) }}';"
+                                            class="rounded" style="width: 150px">
+                                    </td>
                                     <td>{{ $destinasi->description }}</td>
                                     <td>@php
                                         $fasilitas = json_decode($destinasi->facilities, true);
