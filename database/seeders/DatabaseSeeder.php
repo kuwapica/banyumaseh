@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Baturraden',
                 'description' => 'Objek wisata pegunungan dengan pemandian air panas alami, udara sejuk, dan berbagai wahana menarik untuk keluarga.',
-                'image' => 'Baturradenn.jpg',
+                'image' => 'baturraden13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.4,
                 'price' => 25000.00,
@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Telaga Sunyi',
                 'description' => 'Danau kecil yang tenang di tengah hutan, tempat yang sempurna untuk meditasi dan menikmati keheningan alam.',
-                'image' => 'Telaga-Sunyi.jpg',
+                'image' => 'telagasunyi13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.3,
                 'price' => 12000.00,
@@ -80,13 +80,13 @@ class DatabaseSeeder extends Seeder
                 'featured' => false
             ],
             [
-                'name' => 'Pendopo Si Panji',
-                'description' => 'Bangunan bersejarah peninggalan Kerajaan Pajang dengan arsitektur tradisional Jawa yang megah.',
-                'image' => 'Pendopo-Si-Panji.jpg',
-                'category' => 'Wisata Sejarah',
-                'rating' => 4.0,
-                'price' => 8000.00,
-                'location' => 'Purwokerto, Banyumas',
+                'name' => 'Golaga Purbalingga',
+                'description' => 'Obyek wisata Goa Lawa yang tersusun dari batuan lava sangat unik dan menarik jika fokus dikembangkan sebagai wisata geologis (geowisata).',
+                'image' => 'golaga13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.3,
+                'price' => 25000.00,
+                'location' => 'Purbalingga, Banyumas',
                 'featured' => false
             ],
             [
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Curug Jenggala',
                 'description' => 'Air terjun tersembunyi dengan tiga tingkatan yang indah, cocok untuk hiking dan fotografi alam.',
-                'image' => 'Curug-Jenggala.jpg',
+                'image' => 'jenggala13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.3,
                 'price' => 10000.00,
@@ -130,12 +130,12 @@ class DatabaseSeeder extends Seeder
                 'featured' => false
             ],
             [
-                'name' => 'Mendut Noodle',
-                'description' => 'Rumah mie legendaris Banyumas dengan kuah kaldu sapi yang gurih dan mie kenyal buatan sendiri.',
-                'image' => 'Mendut-Noodle.jpg',
-                'category' => 'Wisata Kuliner',
-                'rating' => 4.4,
-                'price' => 18000.00,
+                'name' => 'Hutan Pinus Limpakuwus',
+                'description' => 'Hutan Pinus Limpakuwus merupakan hutan yang berada di kawasan wisata Baturaden, yang berada di ketinggian 750 mdpl.',
+                'image' => 'hutanpinus13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.6,
+                'price' => 17500.00,
                 'location' => 'Purwokerto, Banyumas',
                 'featured' => false
             ],
