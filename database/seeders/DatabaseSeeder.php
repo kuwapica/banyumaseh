@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
         $categories = [
             ['name' => 'Wisata Alam', 'slug' => 'wisata-alam', 'description' => 'Destinasi wisata alam'],
             ['name' => 'Wisata Budaya', 'slug' => 'wisata-budaya', 'description' => 'Destinasi wisata budaya'],
-            ['name' => 'Wisata Kuliner', 'slug' => 'wisata-kuliner', 'description' => 'Destinasi wisata kuliner'],
             ['name' => 'Wisata Sejarah', 'slug' => 'wisata-sejarah', 'description' => 'Destinasi wisata sejarah'],
         ];
 
@@ -42,7 +41,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Curug Cipendok',
                 'description' => 'Air terjun yang indah dengan ketinggian 92 meter, dikelilingi hutan pinus yang asri. Tempat yang sempurna untuk refreshing dan menikmati keindahan alam.',
-                'image' => 'Curug-Cipendok.jpg',
+                'image' => 'cipendok13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.6,
                 'price' => 15000.00,
@@ -52,7 +51,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Baturraden',
                 'description' => 'Objek wisata pegunungan dengan pemandian air panas alami, udara sejuk, dan berbagai wahana menarik untuk keluarga.',
-                'image' => 'Baturradenn.jpg',
+                'image' => 'baturraden13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.4,
                 'price' => 25000.00,
@@ -62,7 +61,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Museum Wayang',
                 'description' => 'Museum yang menyimpan koleksi wayang terlengkap di Indonesia, menampilkan kekayaan budaya tradisional Jawa.',
-                'image' => 'Museum-Wayang.jpg',
+                'image' => 'museum13.jpeg',
                 'category' => 'Wisata Budaya',
                 'rating' => 4.2,
                 'price' => 10000.00,
@@ -72,7 +71,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Telaga Sunyi',
                 'description' => 'Danau kecil yang tenang di tengah hutan, tempat yang sempurna untuk meditasi dan menikmati keheningan alam.',
-                'image' => 'Telaga-Sunyi.jpg',
+                'image' => 'telagasunyi13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.3,
                 'price' => 12000.00,
@@ -80,13 +79,13 @@ class DatabaseSeeder extends Seeder
                 'featured' => false
             ],
             [
-                'name' => 'Pendopo Si Panji',
-                'description' => 'Bangunan bersejarah peninggalan Kerajaan Pajang dengan arsitektur tradisional Jawa yang megah.',
-                'image' => 'Pendopo-Si-Panji.jpg',
-                'category' => 'Wisata Sejarah',
-                'rating' => 4.0,
-                'price' => 8000.00,
-                'location' => 'Purwokerto, Banyumas',
+                'name' => 'Golaga Purbalingga',
+                'description' => 'Obyek wisata Goa Lawa yang tersusun dari batuan lava sangat unik dan menarik jika fokus dikembangkan sebagai wisata geologis (geowisata).',
+                'image' => 'golaga13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.3,
+                'price' => 25000.00,
+                'location' => 'Purbalingga, Banyumas',
                 'featured' => false
             ],
             [
@@ -110,19 +109,19 @@ class DatabaseSeeder extends Seeder
                 'featured' => true
             ],
             [
-                'name' => 'Sate Buntel Pak Gambir',
-                'description' => 'Kuliner khas Banyumas berupa sate daging kambing yang dibungkus lemak, cita rasa autentik yang tak terlupakan.',
-                'image' => 'Sate-Buntel-Pak-Gambir.jpg',
-                'category' => 'Wisata Kuliner',
-                'rating' => 4.7,
-                'price' => 5000.00,
-                'location' => 'Sokaraja, Banyumas',
+                'name' => 'Taman Mas Kemambang',
+                'description' => 'Area rekreasi indah dengan mainan anak-anak warna warni, kolam ikan & jalan beraspal.',
+                'image' => 'kemambang13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.5,
+                'price' => 2000.00,
+                'location' => 'Purwokerto, Banyumas',
                 'featured' => true
             ],
             [
                 'name' => 'Curug Jenggala',
                 'description' => 'Air terjun tersembunyi dengan tiga tingkatan yang indah, cocok untuk hiking dan fotografi alam.',
-                'image' => 'Curug-Jenggala.jpg',
+                'image' => 'jenggala13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.3,
                 'price' => 10000.00,
@@ -130,12 +129,12 @@ class DatabaseSeeder extends Seeder
                 'featured' => false
             ],
             [
-                'name' => 'Mendut Noodle',
-                'description' => 'Rumah mie legendaris Banyumas dengan kuah kaldu sapi yang gurih dan mie kenyal buatan sendiri.',
-                'image' => 'Mendut-Noodle.jpg',
-                'category' => 'Wisata Kuliner',
-                'rating' => 4.4,
-                'price' => 18000.00,
+                'name' => 'Hutan Pinus Limpakuwus',
+                'description' => 'Hutan Pinus Limpakuwus merupakan hutan yang berada di kawasan wisata Baturaden, yang berada di ketinggian 750 mdpl.',
+                'image' => 'hutanpinus13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.6,
+                'price' => 17500.00,
                 'location' => 'Purwokerto, Banyumas',
                 'featured' => false
             ],
@@ -150,13 +149,43 @@ class DatabaseSeeder extends Seeder
                 'featured' => true
             ],
             [
-                'name' => 'Alun-alun Purwokerto',
-                'description' => 'Pusat kota dengan taman yang asri, tempat berkumpul masyarakat dan berbagai acara budaya.',
-                'image' => 'Alun-Alun-Purwokerto.jpg',
-                'category' => 'Wisata Budaya',
-                'rating' => 4.0,
-                'price' => 0.00,
+                'name' => 'Baturraden Adventure Forest',
+                'description' => 'Taman petualangan yang luas di hutan dengan aktivitas berkemah, paintball, menuruni tebing, dan lainnya.',
+                'image' => 'forest13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.6,
+                'price' => 5000.00,
                 'location' => 'Purwokerto, Banyumas',
+                'featured' => false
+            ],
+            [
+                'name' => 'Museum Panglima Besar Jenderal Soordirman',
+                'description' => 'Museum Pangsar Soedirman atau lebih dikenal sebagai Museum Panglima Besar Jendral Soedirman. Museum ini merupakan objek wisata budaya berbasis edukasi yang menyimpan sisi sejarah dari perjuangan Jendral Soedirman.',
+                'image' => 'museum_soedirman13.jpeg',
+                'category' => 'Wisata Sejarah',
+                'rating' => 4.5,
+                'price' => 10000.00,
+                'location' => 'Purwokerto, Banyumas',
+                'featured' => false
+            ],
+            [
+                'name' => 'Museum Bank Rakyat Indonesia',
+                'description' => 'Museum BRI merupakan satu-satunya museum perbankan yang ada di Indonesia yang terletak di pusat kota Purwokerto.',
+                'image' => 'museum_bri13.jpg',
+                'category' => 'Wisata Sejarah',
+                'rating' => 4.5,
+                'price' => 5000.00,
+                'location' => 'Purwokerto, Banyumas',
+                'featured' => false
+            ],
+            [
+                'name' => 'Klenteng Boen Tek Bio',
+                'description' => 'Sebagai rumah ibadah, kelenteng ini memeluk tiga ajaran utama yang dikenal sebagai Tri Dharma, yaitu agama Buddha, Tao, dan Khonghucu.',
+                'image' => 'klenteng13.jpg',
+                'category' => 'Wisata Budaya',
+                'rating' => 4.6,
+                'price' => 5000.00,
+                'location' => 'Sudagaran, Banyumas',
                 'featured' => false
             ]
         ];
