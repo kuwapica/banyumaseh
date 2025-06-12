@@ -1,5 +1,3 @@
-Pembayaran dapat dilakukan melalui transfer bank ke rekening yang tersedia atau tercantum.
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -109,7 +107,6 @@ Pembayaran dapat dilakukan melalui transfer bank ke rekening yang tersedia atau 
     <main class="@hasSection('header')
 ''
 @else
-
 @endif">
         @yield('content')
     </main>
@@ -124,7 +121,8 @@ Pembayaran dapat dilakukan melalui transfer bank ke rekening yang tersedia atau 
                         <a href="{{ route('home') }}" class="site-brand">
                             Banyu<span>Maseh</span>
                         </a>
-                        <p class="text-muted mt-3" style="width: max-content">Jelajahi keindahan dan budaya Banyumas.</p>
+                        <p class="text-muted mt-3" style="width: max-content">Jelajahi keindahan dan budaya Banyumas.
+                        </p>
 
                         <!-- Social Links -->
                         <div class="social-links mt-3">

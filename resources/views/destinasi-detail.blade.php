@@ -19,7 +19,7 @@
                 <!-- Hero Image -->
                 <div class="card shadow-sm mb-4">
                     <div class="position-relative">
-                        <img src="{{ $destinasi->image ? asset('storage/' . $destinasi->image) : 'https://via.placeholder.com/800x400?text=No+Image' }}"
+                        <img src="{{ $destinasi->image ? asset('images/' . $destinasi->image) : 'https://via.placeholder.com/800x400?text=No+Image' }}"
                             class="card-img-top" alt="{{ $destinasi->name }}"
                             style="height: 400px; object-fit: cover; border-radius: 0.375rem;">
 
@@ -115,114 +115,45 @@
             </div>
 
             <!-- Sidebar -->
-            <div class="col-lg-4">
-                <!-- Price & Booking -->
-                <div class="card shadow-sm mb-4 sticky-top" style="top: 20px;">
-                    <div class="card-body">
-                        <div class="text-center mb-4">
-                            <h3 class="text-primary fw-bold mb-1">
-                                Rp {{ number_format($destinasi->price, 0, ',', '.') }}
-                            </h3>
-                            <small class="text-muted">per orang</small>
-                        </div>
-
-                        <!-- Booking Form -->
-                        <form action="{{ route('pesan.store', $destinasi) }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="tanggal_kunjungan" class="form-label">Tanggal Kunjungan</label>
-                                <input type="date" class="form-control" id="tanggal_kunjungan" name="tanggal_kunjungan"
-                                    required min="{{ date('Y-m-d') }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="jumlah_orang" class="form-label">Jumlah Orang</label>
-                                <select class="form-select" id="jumlah_orang" name="jumlah_orang" required>
-                                    <option value="">Pilih jumlah</option>
-                                    @for ($i = 1; $i <= 10; $i++)
-                                        <option value="{{ $i }}">{{ $i }} orang</option>
-                                    @endfor
-                                </select>
-                            </div>
-
-                            <!-- Total Price Display -->
-                            <div class="mb-3 p-3 bg-light rounded">
-                                <div class="d-flex justify-content-between">
-                                    <span>Harga per orang:</span>
-                                    <span>Rp {{ number_format($destinasi->price, 0, ',', '.') }}</span>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Jumlah orang:</span>
-                                    <span id="selected-count">0</span>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between fw-bold">
-                                    <span>Total:</span>
-                                    <span id="total-price">Rp 0</span>
-                                </div>
-                            </div>
-
-                            @auth
-                                <a href="{{ route('pesan_tiket', $destinasi) }}" class="btn btn-primary w-100 mb-3">
-                                    <i class="fas fa-ticket-alt me-2"></i>Pesan Sekarang
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-primary w-100 mb-3">
-                                    <i class="fas fa-sign-in-alt me-2"></i>Login untuk Memesan
-                                </a>
-                            @endauth
-                        </form>
-
-                        <!-- Contact Info -->
-                        <div class="border-top pt-3">
-                            <h6 class="mb-2">Butuh bantuan?</h6>
-                            <p class="text-muted small mb-1">
-                                <i class="fas fa-phone me-2"></i>+62 123 456 789
-                            </p>
-                            <p class="text-muted small mb-0">
-                                <i class="fas fa-envelope me-2"></i>info@wisatabanyumas.com
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Related Destinations -->
-        @if ($relatedDestinations->count() > 0)
-            <div class="row mt-5">
-                <div class="col-12">
-                    <h3 class="mb-4">Destinasi Serupa</h3>
-                    <div class="row">
-                        @foreach ($relatedDestinations as $related)
-                            <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="card h-100 shadow-sm">
-                                    <img src="{{ $related->image ? asset('storage/' . $related->image) : 'https://via.placeholder.com/300x200?text=No+Image' }}"
-                                        class="card-img-top" alt="{{ $related->name }}"
-                                        style="height: 200px; object-fit: cover;">
-
-                                    <div class="card-body d-flex flex-column">
-                                        <h6 class="card-title">{{ $related->name }}</h6>
-                                        <p class="card-text text-muted small flex-grow-1">
-                                            {{ Str::limit($related->description, 80) }}
-                                        </p>
-                                        <div class="d-flex justify-content-between align-items-center mt-auto">
-                                            <span class="text-primary fw-bold">
-                                                Rp {{ number_format($related->price, 0, ',', '.') }}
-                                            </span>
-                                            <a href="{{ route('user.destinasi.show', $related) }}"
-                                                class="btn btn-sm btn-outline-primary">
-                                                Lihat
-                                            </a>
+            @if ($relatedDestinations->count() > 0)
+                <div class="col-lg-4">
+                    <!-- Price & Booking -->
+                    <div class="card shadow-sm mb-4 position-relative">
+                        <h5 class="mb-3 px-3 pt-3">Destinasi Serupa</h5>
+                        <div class="px-3 pb-3">
+                            @foreach ($relatedDestinations as $related)
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="{{ $related->image ? asset('images/' . $related->image) : 'https://via.placeholder.com/150x100?text=No+Image' }}"
+                                            class="img-fluid rounded-start" alt="{{ $related->name }}"
+                                            style="height: 100px; object-fit: cover;">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body p-2 d-flex flex-column">
+                                            <h6 class="card-title mb-1">{{ Str::limit($related->name, 30) }}</h6>
+                                            <p class="card-text text-muted small flex-grow-1 mb-1">
+                                                {{ Str::limit($related->description, 60) }}
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                                <span class="text-primary fw-bold small">
+                                                    Rp {{ number_format($related->price, 0, ',', '.') }}
+                                                </span>
+                                                <a href="{{ route('user.destinasi.show', $related) }}"
+                                                    class="btn btn-sm btn-outline-primary">
+                                                    Lihat
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
+
+        </div>
+
     </div>
 @endsection
 

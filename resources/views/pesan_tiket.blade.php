@@ -6,7 +6,7 @@
     <div class="container">
         <!-- Hero Section -->
 
-        <div class="text-center my-0">
+        <div class="text-center my-5">
             <h2 class="display-5 fw-bold text-primary mb-3">Pesan Tiket Wisata</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">Nikmati pengalaman wisata terbaik dengan pemesanan
                 tiket yang mudah dan cepat</p>
@@ -160,7 +160,8 @@
                                     <i class="bi bi-info-circle-fill text-primary me-2 mt-1"></i>
                                     <div>
                                         <h5 class="mb-1 h6">Pembayaran</h5>
-                                        <p class="small text-muted mb-0">Pembayaran dapat dilakukan melalui transfer bank ke rekening yang tersedia atau tercantum.</p>
+                                        <p class="small text-muted mb-0">Pembayaran dapat dilakukan melalui transfer bank
+                                            ke rekening yang tersedia atau tercantum.</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +197,7 @@
                                 </li>
                                 <li class="mb-0">
                                     <i class="bi bi-envelope-fill text-primary me-2"></i>
-                                    cs@wisatakita.com
+                                    info@banyumaseh.com
                                 </li>
                             </ul>
                         </div>
@@ -219,7 +220,7 @@
                         <div class="card h-100 border-0 shadow-sm overflow-hidden">
                             <div class="position-relative overflow-hidden" style="height: 200px;">
                                 @if ($destinasi->image)
-                                    <img src="{{ asset('storage/' . $destinasi->image) }}"
+                                    <img src="{{ asset('images/' . $destinasi->image) }}"
                                         class="card-img-top h-100 object-cover" alt="{{ $destinasi->nama_destinasi }}">
                                 @else
                                     <div class="h-100 d-flex align-items-center justify-content-center bg-light">
