@@ -113,6 +113,7 @@
                                     <!-- Image -->
                                     <div class="position-relative">
                                         <img src="{{ $destinasi->image ? asset('images/' . $destinasi->image) : 'https://via.placeholder.com/400x250?text=No+Image' }}"
+                                            onerror="this.onerror=null; this.src='{{ asset('storage/' . $destinasi->image) }}';"
                                             class="card-img-top" alt="{{ $destinasi->name }}"
                                             style="height: 200px; object-fit: cover;">
 
