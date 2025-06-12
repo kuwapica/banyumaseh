@@ -4,9 +4,9 @@
 
 @section('content')
     @php
-    $heroImages = ['slamet13.jpg', 'buntel13.png', 'cipendok13.jpg', 'owabong13.jpeg'];
+    $heroImages = ['slamet13.jpg', 'cipendok13.jpg', 'owabong13.jpeg', 'kemambang13.jpg'];
 
-    $destinationImages = ['slamet13.jpg', 'buntel13.png', 'cipendok13.jpg'];
+    $destinationImages = ['slamet13.jpg', 'cipendok13.jpg', 'owabong13.jpeg'];
     @endphp
     <!-- Hero Carousel Section -->
     <section id="hero-carousel" class="position-relative">

@@ -110,13 +110,13 @@ class DatabaseSeeder extends Seeder
                 'featured' => true
             ],
             [
-                'name' => 'Sate Buntel Pak Gambir',
-                'description' => 'Kuliner khas Banyumas berupa sate daging kambing yang dibungkus lemak, cita rasa autentik yang tak terlupakan.',
-                'image' => 'buntel13.png',
-                'category' => 'Wisata Kuliner',
-                'rating' => 4.7,
-                'price' => 5000.00,
-                'location' => 'Sokaraja, Banyumas',
+                'name' => 'Taman Mas Kemambang',
+                'description' => 'Area rekreasi indah dengan mainan anak-anak warna warni, kolam ikan & jalan beraspal.',
+                'image' => 'kemambang13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.5,
+                'price' => 2000.00,
+                'location' => 'Purwokerto, Banyumas',
                 'featured' => true
             ],
             [
@@ -150,12 +150,12 @@ class DatabaseSeeder extends Seeder
                 'featured' => true
             ],
             [
-                'name' => 'Alun-alun Purwokerto',
-                'description' => 'Pusat kota dengan taman yang asri, tempat berkumpul masyarakat dan berbagai acara budaya.',
-                'image' => 'Alun-Alun-Purwokerto.jpg',
-                'category' => 'Wisata Budaya',
-                'rating' => 4.0,
-                'price' => 0.00,
+                'name' => 'Baturraden Adventure Forest',
+                'description' => 'Taman petualangan yang luas di hutan dengan aktivitas berkemah, paintball, menuruni tebing, dan lainnya.',
+                'image' => 'forest13.jpg',
+                'category' => 'Wisata Alam',
+                'rating' => 4.6,
+                'price' => 5000.00,
                 'location' => 'Purwokerto, Banyumas',
                 'featured' => false
             ]
