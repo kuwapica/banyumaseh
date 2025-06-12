@@ -71,3 +71,5 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // })->name('user.dashboard');
     Route::get('/beranda', [HomeController::class, 'index'])->name('user.dashboard');
 });
+
+Route::get('/help', function () {return view('help');})->name('help');

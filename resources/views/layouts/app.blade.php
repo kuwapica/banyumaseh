@@ -142,6 +142,7 @@
                         <ul class="list-unstyled mt-3">
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('destination') ?? route('destinasi.index') }}">Destination</a></li>
+                            <li><a href="{{ route('pesan_tiket') }}">Booking</a></li>
                         </ul>
                     </div>
                 </div>
@@ -151,11 +152,7 @@
                     <div class="footer-item">
                         <h6>Quick Links</h6>
                         <ul class="list-unstyled mt-3">
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Help & Support</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="{{ route('help') }}">Help & Support</a></li>
                         </ul>
                     </div>
                 </div>
