@@ -76,28 +76,33 @@
                                             class="btn btn-sm btn-info">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        @if ($pesanan->status == 'pending')
-                                            <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}"
-                                                method="POST" class="d-inline">
-                                                @csrf
-                                                @method('PATCH')
-                                                <input type="hidden" name="status" value="confirmed">
-                                                <button type="submit" class="btn btn-sm btn-success"
-                                                    onclick="return confirm('Konfirmasi pesanan ini?')">
-                                                    <i class="fas fa-check"></i>
-                                                </button>
-                                            </form>
-                                            <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}"
-                                                method="POST" class="d-inline">
-                                                @csrf
-                                                @method('PATCH')
-                                                <input type="hidden" name="status" value="canceled">
-                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('Batalkan pesanan ini?')">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            </form>
+                                        @if (in_array($pesanan->status, ['pending', 'waiting_verification']))
+                                            <div class="row mt-2">
+                                                <div class="col-md-12">
+                                                    <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="status" value="confirmed">
+                                                        <button type="submit" class="btn btn-success"
+                                                            onclick="return confirm('Konfirmasi pesanan ini?')">
+                                                            <i class="fas fa-check"></i>
+                                                        </button>
+                                                    </form>
+                                                    <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="status" value="canceled">
+                                                        <button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('Batalkan pesanan ini?')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         @endif
+
                                     </td>
                                 </tr>
                             @empty
