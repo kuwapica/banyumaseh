@@ -137,7 +137,7 @@
 
                 <!-- Navigation Links -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-item">
+                    <div class="footer-item" style="width: max-content">
                         <h6>Main Pages</h6>
                         <ul class="list-unstyled mt-3">
                             <li><a href="{{ route('home') }}">Home</a></li>
@@ -149,7 +149,7 @@
 
                 <!-- Quick Links -->
                 <div class="col-lg-3 col-md-6 mb-4" style="width: max-content">
-                    <div class="footer-item">
+                    <div class="footer-item" style="width: max-content">
                         <h6>Quick Links</h6>
                         <ul class="list-unstyled mt-3">
                             <li><a href="{{ route('help') }}">Help & Support</a></li>
@@ -159,7 +159,7 @@
 
                 <!-- Contact Info -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-item">
+                    <div class="footer-item" style="width: max-content">
                         <h6>Contact Info</h6>
                         <div class="contact-info mt-3" style="width: max-content">
                             <div class="d-flex align-items-center mb-2">
