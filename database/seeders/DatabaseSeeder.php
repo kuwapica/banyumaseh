@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
         $categories = [
             ['name' => 'Wisata Alam', 'slug' => 'wisata-alam', 'description' => 'Destinasi wisata alam'],
             ['name' => 'Wisata Budaya', 'slug' => 'wisata-budaya', 'description' => 'Destinasi wisata budaya'],
-            ['name' => 'Wisata Kuliner', 'slug' => 'wisata-kuliner', 'description' => 'Destinasi wisata kuliner'],
             ['name' => 'Wisata Sejarah', 'slug' => 'wisata-sejarah', 'description' => 'Destinasi wisata sejarah'],
         ];
 
@@ -157,6 +156,36 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.6,
                 'price' => 5000.00,
                 'location' => 'Purwokerto, Banyumas',
+                'featured' => false
+            ],
+            [
+                'name' => 'Museum Panglima Besar Jenderal Soordirman',
+                'description' => 'Museum Pangsar Soedirman atau lebih dikenal sebagai Museum Panglima Besar Jendral Soedirman. Museum ini merupakan objek wisata budaya berbasis edukasi yang menyimpan sisi sejarah dari perjuangan Jendral Soedirman.',
+                'image' => 'museum_soedirman13.jpeg',
+                'category' => 'Wisata Sejarah',
+                'rating' => 4.5,
+                'price' => 10000.00,
+                'location' => 'Purwokerto, Banyumas',
+                'featured' => false
+            ],
+            [
+                'name' => 'Museum Bank Rakyat Indonesia',
+                'description' => 'Museum BRI merupakan satu-satunya museum perbankan yang ada di Indonesia yang terletak di pusat kota Purwokerto.',
+                'image' => 'museum_bri13.jpg',
+                'category' => 'Wisata Sejarah',
+                'rating' => 4.5,
+                'price' => 5000.00,
+                'location' => 'Purwokerto, Banyumas',
+                'featured' => false
+            ],
+            [
+                'name' => 'Klenteng Boen Tek Bio',
+                'description' => 'Sebagai rumah ibadah, kelenteng ini memeluk tiga ajaran utama yang dikenal sebagai Tri Dharma, yaitu agama Buddha, Tao, dan Khonghucu.',
+                'image' => 'klenteng13.jpg',
+                'category' => 'Wisata Budaya',
+                'rating' => 4.6,
+                'price' => 5000.00,
+                'location' => 'Sudagaran, Banyumas',
                 'featured' => false
             ]
         ];
