@@ -112,7 +112,7 @@
                                 <div class="card h-100 shadow-sm destination-card">
                                     <!-- Image -->
                                     <div class="position-relative">
-                                        <img src="{{ $destinasi->image ? asset('storage/' . $destinasi->image) : 'https://via.placeholder.com/400x250?text=No+Image' }}"
+                                        <img src="{{ $destinasi->image ? asset('images/' . $destinasi->image) : 'https://via.placeholder.com/400x250?text=No+Image' }}"
                                             class="card-img-top" alt="{{ $destinasi->name }}"
                                             style="height: 200px; object-fit: cover;">
 
