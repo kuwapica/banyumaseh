@@ -20,6 +20,7 @@
                 <div class="card shadow-sm mb-4">
                     <div class="position-relative">
                         <img src="{{ $destinasi->image ? asset('images/' . $destinasi->image) : 'https://via.placeholder.com/800x400?text=No+Image' }}"
+                            onerror="this.onerror=null; this.src='{{ asset('storage/' . $destinasi->image) }}';"
                             class="card-img-top" alt="{{ $destinasi->name }}"
                             style="height: 400px; object-fit: cover; border-radius: 0.375rem;">
 

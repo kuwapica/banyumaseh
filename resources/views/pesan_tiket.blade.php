@@ -11,11 +11,20 @@
             <p class="lead text-muted mx-auto" style="max-width: 700px;">Nikmati pengalaman wisata terbaik dengan pemesanan
                 tiket yang mudah dan cepat</p>
         </div>
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{{ route('pesan_tiket.show') }}" class="btn btn-xl btn-outline-primary">
-                Daftar Pesanan <i class="bi bi-arrow-right ms-1"></i>
-            </a>
-        </div>
+        @auth
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <a href="{{ route('pesan_tiket.show') }}" class="btn btn-xl btn-outline-primary">
+                    Daftar Pesanan <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        @endauth
+        @guest
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <a href="{{ route('login') }}" class="btn btn-xl btn-outline-primary">
+                    Daftar Pesanan <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        @endguest
         <div class="row g-4">
             <!-- Booking Form -->
             <div class="col-lg-8">
