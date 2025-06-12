@@ -4,7 +4,7 @@
 
 @section('content')
     @php
-    $heroImages = ['slamet13.jpg', 'Sate-Buntel-Pak-Gambir.jpg', 'Curug-Cipendok.jpg', 'Owabong-Water-Park.jpg'];
+    $heroImages = ['slamet13.jpg', 'Sate-Buntel-Pak-Gambir.jpg', 'Curug-Cipendok.jpg', 'owabong13.jpeg'];
 
     $destinationImages = ['slamet13.jpg', 'Sate-Buntel-Pak-Gambir.jpg', 'Curug-Cipendok.jpg'];
     @endphp
