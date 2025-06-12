@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Owabong Water Park',
                 'description' => 'Taman air terbesar di Jawa Tengah dengan berbagai wahana seru dan kolam renang untuk semua usia.',
-                'image' => 'Owabong-Water-Park.jpg',
+                'image' => 'owabong13.jpeg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.5,
                 'price' => 35000.00,
