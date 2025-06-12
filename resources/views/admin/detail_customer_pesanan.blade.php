@@ -83,7 +83,7 @@
                     </div>
                 @endif
 
-                @if ($pesanan->status == 'pending')
+                @if (in_array($pesanan->status, ['pending', 'waiting_verification']))
                     <div class="row mt-4">
                         <div class="col-md-12">
                             <form action="{{ route('admin.pesanan.updateStatus', $pesanan->id) }}" method="POST"
