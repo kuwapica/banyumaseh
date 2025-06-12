@@ -142,7 +142,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Gunung Slamet',
                 'description' => 'Gunung tertinggi di Jawa Tengah dengan pendakian menantang dan pemandangan sunrise yang spektakuler.',
-                'image' => 'Gunung-Slamet.jpg',
+                'image' => 'slamet13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.8,
                 'price' => 50000.00,
