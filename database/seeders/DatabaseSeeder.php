@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Curug Cipendok',
                 'description' => 'Air terjun yang indah dengan ketinggian 92 meter, dikelilingi hutan pinus yang asri. Tempat yang sempurna untuk refreshing dan menikmati keindahan alam.',
-                'image' => 'Curug-Cipendok.jpg',
+                'image' => 'cipendok13.jpg',
                 'category' => 'Wisata Alam',
                 'rating' => 4.6,
                 'price' => 15000.00,
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Museum Wayang',
                 'description' => 'Museum yang menyimpan koleksi wayang terlengkap di Indonesia, menampilkan kekayaan budaya tradisional Jawa.',
-                'image' => 'Museum-Wayang.jpg',
+                'image' => 'museum13.jpeg',
                 'category' => 'Wisata Budaya',
                 'rating' => 4.2,
                 'price' => 10000.00,
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Sate Buntel Pak Gambir',
                 'description' => 'Kuliner khas Banyumas berupa sate daging kambing yang dibungkus lemak, cita rasa autentik yang tak terlupakan.',
-                'image' => 'Sate-Buntel-Pak-Gambir.jpg',
+                'image' => 'buntel13.png',
                 'category' => 'Wisata Kuliner',
                 'rating' => 4.7,
                 'price' => 5000.00,
