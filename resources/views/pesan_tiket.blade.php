@@ -160,8 +160,7 @@
                                     <i class="bi bi-info-circle-fill text-primary me-2 mt-1"></i>
                                     <div>
                                         <h5 class="mb-1 h6">Pembayaran</h5>
-                                        <p class="small text-muted mb-0">Pembayaran dapat dilakukan langsung di lokasi
-                                            wisata atau melalui transfer bank.</p>
+                                        <p class="small text-muted mb-0">Pembayaran dapat dilakukan melalui transfer bank ke rekening yang tersedia atau tercantum.</p>
                                     </div>
                                 </div>
                             </div>

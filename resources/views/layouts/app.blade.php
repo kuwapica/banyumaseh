@@ -1,3 +1,5 @@
+Pembayaran dapat dilakukan melalui transfer bank ke rekening yang tersedia atau tercantum.
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -122,7 +124,7 @@
                         <a href="{{ route('home') }}" class="site-brand">
                             Banyu<span>Maseh</span>
                         </a>
-                        <p class="text-muted mt-3">Jelajahi keindahan dan budaya Banyumas.</p>
+                        <p class="text-muted mt-3" style="width: max-content">Jelajahi keindahan dan budaya Banyumas.</p>
 
                         <!-- Social Links -->
                         <div class="social-links mt-3">
@@ -147,7 +149,7 @@
                 </div>
 
                 <!-- Quick Links -->
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6 mb-4" style="width: max-content">
                     <div class="footer-item">
                         <h6>Quick Links</h6>
                         <ul class="list-unstyled mt-3">
@@ -164,14 +166,14 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-item">
                         <h6>Contact Info</h6>
-                        <div class="contact-info mt-3">
-                            <div class="d-flex align-items-start mb-2">
+                        <div class="contact-info mt-3" style="width: max-content">
+                            <div class="d-flex align-items-center mb-2">
                                 <i class="fas fa-map-marker-alt me-2 mt-1"></i>
                                 <span class="small">Purwokerto, Banyumas, Jawa Tengah</span>
                             </div>
-                            <div class="d-flex align-items-center mb-2">
+                            <div class="d-flex align-items-center mb-2" style="width: max-content">
                                 <i class="fas fa-phone me-2"></i>
-                                <span class="small">+62 281 123456</span>
+                                <span class="small">+62 812-3456-7890</span>
                             </div>
                             <div class="d-flex align-items-center mb-2">
                                 <i class="fas fa-envelope me-2"></i>
