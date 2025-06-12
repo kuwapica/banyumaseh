@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRole;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -17,10 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         // Seed Users
         User::create([
-            ['name' => 'Test User'],
-            ['email' => 'test@example.com'],
-            ['password' => Hash::make('1234')],
-            ['role' => 'User']
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => Hash::make('1234'),
+            'role' => UserRole::User,
         ]);
 
 
