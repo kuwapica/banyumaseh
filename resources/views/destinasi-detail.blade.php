@@ -118,7 +118,7 @@
             <!-- Sidebar -->
             @if ($relatedDestinations->count() > 0)
                 <div class="col-lg-4">
-                    <!-- Price & Booking -->
+                    <!-- Another Destination -->
                     <div class="card shadow-sm mb-4 position-relative">
                         <h5 class="mb-3 px-3 pt-3">Destinasi Serupa</h5>
                         <div class="px-3 pb-3">

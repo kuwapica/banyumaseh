@@ -55,7 +55,7 @@
                                                 {{ $destinasi->description }}
                                             </p>
                                             <div class="d-flex gap-3">
-                                                <a href="#" class="btn btn-primary btn-lg px-4 py-3">
+                                                <a href="{{ route('user.destinasi.index') }}" class="btn btn-primary btn-lg px-4 py-3">
                                                     <i class="fas fa-eye me-2"></i>Jelajahi Sekarang
                                                 </a>
                                                 <a href="#" class="btn btn-outline-light btn-lg px-4 py-3">
@@ -172,7 +172,7 @@
 
             <!-- View All Button -->
             <div class="text-center mt-5">
-                <a href="{{ route('destinasi.index') }}" class="btn btn-outline-primary btn-lg px-5 py-3">
+                <a href="{{ route('user.destinasi.index') }}" class="btn btn-outline-primary btn-lg px-5 py-3">
                     <i class="fas fa-compass me-2"></i>Lihat Semua Destinasi
                 </a>
             </div>

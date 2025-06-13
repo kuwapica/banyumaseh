@@ -37,7 +37,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('destination*') || request()->routeIs('destinasi.*') ? 'active' : '' }}"
-                            href="{{ route('destination') ?? route('destinasi.index') }}">Destination</a>
+                            href="{{ route('destination') ?? route('user.destinasi.index') }}">Destination</a>
                     </li>
                     @if (Route::has('pesan_tiket'))
                         <li class="nav-item">
@@ -141,7 +141,7 @@
                         <h6>Main Pages</h6>
                         <ul class="list-unstyled mt-3">
                             <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="{{ route('destination') ?? route('destinasi.index') }}">Destination</a></li>
+                            <li><a href="{{ route('destination') ?? route('user.destinasi.index') }}">Destination</a></li>
                             <li><a href="{{ route('pesan_tiket') }}">Booking</a></li>
                         </ul>
                     </div>

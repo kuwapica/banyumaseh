@@ -16,9 +16,10 @@ use App\Http\Controllers\Admin\AdminProfilController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Destinasi Routes
-Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');        // List
-Route::get('/destination', [DestinasiController::class, 'show'])->name('destination');           // Detail (tanpa parameter)
-Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('user.destinasi.show'); // Detail (dengan parameter)
+Route::get('/destinasi', [DestinasiController::class, 'index'])->name('user.destinasi.index');
+Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
+Route::get('/destinasi/{destinasi}', [DestinasiController::class, 'show'])->name('user.destinasi.show');
+
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -31,9 +32,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 Route::get('/pesan-tiket', [PesananController::class, 'index'])->name('pesan_tiket');
 Route::post('/pesan-tiket', [PesananController::class, 'store'])->name('pesan_tiket.store');
 Route::get('/pesan-tiket/daftar', [PesananController::class, 'daftarPesanan'])->name('pesan_tiket.show');
-
-Route::get('/destination', [DestinasiController::class, 'index'])->name('destination');
-Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi.index');
 
 Route::post('/pesan/{destinasi}', [PesananController::class, 'store'])
     ->name('pesan.store')

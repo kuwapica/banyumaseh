@@ -12,7 +12,7 @@
                         <h5 class="mb-0"><i class="fas fa-filter me-2"></i>Filter Destinasi</h5>
                     </div>
                     <div class="card-body">
-                        <form method="GET" action="{{ route('destinasi.index') }}" id="filterForm">
+                        <form method="GET" action="{{ route('user.destinasi.index') }}" id="filterForm">
                             <!-- Search -->
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Cari Destinasi</label>
@@ -55,7 +55,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search me-2"></i>Terapkan Filter
                                 </button>
-                                <a href="{{ route('destinasi.index') }}" class="btn btn-outline-secondary">
+                                <a href="{{ route('user.destinasi.index') }}" class="btn btn-outline-secondary">
                                     <i class="fas fa-undo me-2"></i>Reset Filter
                                 </a>
                             </div>
@@ -190,7 +190,7 @@
                         <i class="fas fa-search fa-3x text-muted mb-3"></i>
                         <h4>Destinasi tidak ditemukan</h4>
                         <p class="text-muted">Coba ubah kata kunci pencarian atau filter yang Anda gunakan.</p>
-                        <a href="{{ route('destinasi.index') }}" class="btn btn-primary">
+                        <a href="{{ route('user.destinasi.index') }}" class="btn btn-primary">
                             <i class="fas fa-undo me-2"></i>Lihat Semua Destinasi
                         </a>
                     </div>
