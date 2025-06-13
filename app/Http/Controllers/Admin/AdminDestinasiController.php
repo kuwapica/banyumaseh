@@ -32,8 +32,8 @@ class AdminDestinasiController extends Controller
             'image' => 'nullable|image|max:2048', // Max 2MB
             'price' => 'required|numeric',
             'location' => 'required',
-            'facilities' => 'array',
-            'operating_hours' => 'array',
+            'facilities' => 'nullable|array',
+            'operating_hours' => 'nullable|array',
         ]);
 
         $destinasi = new Destinasi();
@@ -81,12 +81,16 @@ class AdminDestinasiController extends Controller
             'image' => 'nullable|image|max:2048', // Max 2MB
             'location' => 'required',
             'price' => 'required|numeric',
+            'facilities' => 'nullable|array',
+            'operating_hours' => 'nullable|array',
         ]);
 
         $destinasi->name = $request->name;
         $destinasi->description = $request->description;
         $destinasi->location = $request->location;
         $destinasi->price = $request->price;
+        $destinasi->facilities = json_encode($request->facilities);
+        $destinasi->operating_hours = json_encode($request->operating_hours);
 
         if ($request->hasFile('image')) {
             if ($destinasi->image) {

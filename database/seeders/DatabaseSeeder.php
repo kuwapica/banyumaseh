@@ -46,7 +46,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.6,
                 'price' => 15000.00,
                 'location' => 'Cilongok, Banyumas',
-                'featured' => true
+                'featured' => true,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Baturraden',
@@ -56,7 +78,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.4,
                 'price' => 25000.00,
                 'location' => 'Baturraden, Banyumas',
-                'featured' => true
+                'featured' => true,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Museum Wayang',
@@ -66,7 +110,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.2,
                 'price' => 10000.00,
                 'location' => 'Purwokerto, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Telaga Sunyi',
@@ -76,7 +142,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.3,
                 'price' => 12000.00,
                 'location' => 'Kemranjen, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Golaga Purbalingga',
@@ -86,7 +174,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.3,
                 'price' => 25000.00,
                 'location' => 'Purbalingga, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Goa Sarabadak',
@@ -96,7 +206,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.1,
                 'price' => 20000.00,
                 'location' => 'Karanglewas, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Owabong Water Park',
@@ -106,7 +238,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.5,
                 'price' => 35000.00,
                 'location' => 'Purbalingga, Banyumas',
-                'featured' => true
+                'featured' => true,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Taman Mas Kemambang',
@@ -116,7 +270,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.5,
                 'price' => 2000.00,
                 'location' => 'Purwokerto, Banyumas',
-                'featured' => true
+                'featured' => true,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Curug Jenggala',
@@ -126,7 +302,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.3,
                 'price' => 10000.00,
                 'location' => 'Kalipagu, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Hutan Pinus Limpakuwus',
@@ -136,7 +334,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.6,
                 'price' => 17500.00,
                 'location' => 'Purwokerto, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Gunung Slamet',
@@ -146,7 +366,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.8,
                 'price' => 50000.00,
                 'location' => 'Baturraden, Banyumas',
-                'featured' => true
+                'featured' => true,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Baturraden Adventure Forest',
@@ -156,7 +398,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.6,
                 'price' => 5000.00,
                 'location' => 'Purwokerto, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Museum Panglima Besar Jenderal Soordirman',
@@ -166,7 +430,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.5,
                 'price' => 10000.00,
                 'location' => 'Purwokerto, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Museum Bank Rakyat Indonesia',
@@ -176,7 +462,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.5,
                 'price' => 5000.00,
                 'location' => 'Purwokerto, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ],
             [
                 'name' => 'Klenteng Boen Tek Bio',
@@ -186,7 +494,29 @@ class DatabaseSeeder extends Seeder
                 'rating' => 4.6,
                 'price' => 5000.00,
                 'location' => 'Sudagaran, Banyumas',
-                'featured' => false
+                'featured' => false,
+                'facilities' => json_encode([
+                    'Parkir luas',
+                    'Toilet bersih',
+                    'Mushola',
+                    'Warung makan',
+                    'Spot foto',
+                    'Pemandu wisata',
+                ]),
+                'operating_hours' => json_encode([
+                    [
+                        'hari' => 'Senin - Jumat',
+                        'jam'  => '08:00 - 17:00',
+                    ],
+                    [
+                        'hari' => 'Sabtu - Minggu',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                    [
+                        'hari' => 'Libur Nasional',
+                        'jam'  => '07:00 - 18:00',
+                    ],
+                ]),
             ]
         ];
 

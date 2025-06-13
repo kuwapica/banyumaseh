@@ -77,40 +77,68 @@
                         </div>
 
                         <!-- Features -->
+                        @php
+                            $fasilitas = json_decode($destinasi->facilities, true);
+                            $chunks = $fasilitas ? array_chunk($fasilitas, ceil(count($fasilitas) / 2)) : [];
+                        @endphp
+
                         <div class="mb-4">
                             <h5 class="mb-3">Fasilitas</h5>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Parkir luas</li>
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Toilet bersih</li>
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mushola</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Warung makan</li>
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Spot foto</li>
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Pemandu wisata</li>
-                                    </ul>
-                                </div>
+                                @if ($chunks)
+                                    @foreach ($chunks as $chunk)
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled">
+                                                @foreach ($chunk as $item)
+                                                    <li class="mb-2"><i
+                                                            class="fas fa-check text-success me-2"></i>{{ $item }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <em>-</em>
+                                @endif
                             </div>
                         </div>
 
+
                         <!-- Operating Hours -->
+                        @php
+                            $jam = json_decode($destinasi->operating_hours, true);
+                            $kolom1 = [];
+                            $kolom2 = [];
+                            if ($jam && is_array($jam)) {
+                                // Bagi 2 kolom, kamu bisa sesuaikan logika bagiannya kalau mau
+                                $kolom1 = array_slice($jam, 0, ceil(count($jam) / 2));
+                                $kolom2 = array_slice($jam, ceil(count($jam) / 2));
+                            }
+                        @endphp
+
                         <div class="mb-4">
                             <h5 class="mb-3">Jam Operasional</h5>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p class="mb-1"><strong>Senin - Jumat:</strong> 08:00 - 17:00</p>
-                                    <p class="mb-1"><strong>Sabtu - Minggu:</strong> 07:00 - 18:00</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="mb-1"><strong>Libur Nasional:</strong> 07:00 - 18:00</p>
-                                    <p class="mb-1 text-muted"><small>*Jam dapat berubah sewaktu-waktu</small></p>
-                                </div>
+                                @if ($jam && is_array($jam))
+                                    <div class="col-md-6">
+                                        @foreach ($kolom1 as $item)
+                                            <p class="mb-1"><strong>{{ $item['hari'] }}:</strong> {{ $item['jam'] }}
+                                            </p>
+                                        @endforeach
+                                    </div>
+                                    <div class="col-md-6">
+                                        @foreach ($kolom2 as $item)
+                                            <p class="mb-1"><strong>{{ $item['hari'] }}:</strong> {{ $item['jam'] }}
+                                            </p>
+                                        @endforeach
+                                        <p class="mb-1 text-muted"><small>*Jam dapat berubah sewaktu-waktu</small></p>
+                                    </div>
+                                @else
+                                    <em>-</em>
+                                @endif
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
